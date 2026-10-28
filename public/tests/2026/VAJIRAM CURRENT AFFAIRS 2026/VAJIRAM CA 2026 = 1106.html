@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>VAJIRAM CA 2026 = 1106</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--primary:#667eea;--primary-dark:#5568d3;--secondary:#764ba2;--success:#48bb78;--danger:#f5576c;--warning:#fbbf24;--info:#4facfe;--bg-light:#f7fafc;--bg-white:#fff;--text-dark:#1a202c;--text-light:#718096;--border:#e2e8f0}
+[data-theme="dark"]{--bg-light:#1a202c;--bg-white:#2d3748;--text-dark:#f7fafc;--text-light:#cbd5e0;--border:#4a5568}
+body{font-family:'Poppins','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);min-height:100vh;overflow:hidden;user-select:none;-webkit-user-select:none;transition:background .3s}
+.scrollable::-webkit-scrollbar{width:6px}
+.scrollable::-webkit-scrollbar-track{background:transparent}
+.scrollable::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px}
+.protected-content{white-space:pre-wrap;word-wrap:break-word;word-break:break-word;line-height:1.6;user-select:none}
+#modeSelection{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;overflow-y:auto}
+.mode-container{background:#fff;border-radius:24px;padding:40px 30px;max-width:500px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:ms .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes ms{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.mode-header{text-align:center;margin-bottom:32px}
+.mode-header-icon{width:70px;height:70px;margin:0 auto 16px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff;box-shadow:0 8px 24px rgba(102,126,234,.3)}
+.mode-header h2{font-size:24px;font-weight:700;color:#1a202c;margin-bottom:8px}
+.mode-header p{font-size:14px;color:#718096;font-weight:400}
+.mode-cards{display:grid;gap:16px;margin-bottom:24px}
+.mode-card{background:#f7fafc;border:2px solid #e2e8f0;border-radius:16px;padding:20px;cursor:pointer;transition:all .3s;position:relative}
+.mode-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(102,126,234,.15);border-color:#cbd5e0}
+.mode-card.selected{border-color:#667eea;background:#fff;box-shadow:0 8px 24px rgba(102,126,234,.2);transform:translateY(-2px)}
+.mode-card-header{display:flex;align-items:center}
+.mode-icon{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-right:16px;flex-shrink:0}
+.exam-mode .mode-icon{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff}
+.practice-mode .mode-icon{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);color:#fff}
+.mode-info h3{font-size:17px;font-weight:700;color:#1a202c;margin-bottom:4px}
+.mode-info p{font-size:13px;color:#718096;line-height:1.4}
+.timer-config{margin-bottom:24px}
+.timer-config label{display:block;font-size:14px;font-weight:600;color:#1a202c;margin-bottom:10px}
+.timer-config label i{margin-right:6px;color:#667eea}
+.timer-input{width:100%;padding:14px 16px;border:2px solid #e2e8f0;border-radius:12px;font-size:15px;font-weight:500;transition:all .3s;background:#fff;font-family:'Poppins',sans-serif;color:#1a202c}
+.timer-input::placeholder{color:#a0aec0}
+.timer-input:focus{outline:none;border-color:#667eea;box-shadow:0 0 0 3px rgba(102,126,234,.1)}
+.start-btn{width:100%;padding:16px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 20px rgba(102,126,234,.35)}
+.start-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 28px rgba(102,126,234,.45)}
+.start-btn:active:not(:disabled){transform:translateY(0)}
+.start-btn:disabled{opacity:.5;cursor:not-allowed;background:#cbd5e0;box-shadow:none}
+#quizContainer{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--bg-light);overflow:hidden}
+
+/* MODIFIED HEADER SIZES FOR COMPACTNESS */
+.quiz-header{position:fixed;top:0;left:0;right:0;background:var(--bg-white);box-shadow:0 2px 15px rgba(0,0,0,.08);z-index:100;padding:8px 12px}
+.header-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:10px}
+.quiz-title{font-size:14px;font-weight:700;color:var(--text-dark);display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.quiz-title-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px}
+.mode-badge{font-size:9px;padding:3px 8px;border-radius:20px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.mode-badge.exam{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff}
+.mode-badge.practice{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);color:#fff}
+.header-actions{display:flex;gap:8px;align-items:center}
+.theme-toggle{width:32px;height:32px;background:var(--bg-light);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text-dark);transition:all .3s}
+.theme-toggle:hover{transform:scale(1.1)}
+.timer-display{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--primary);padding:5px 10px;background:linear-gradient(135deg,rgba(102,126,234,.15) 0%,rgba(118,75,162,.15) 100%);border-radius:12px;white-space:nowrap}
+.timer-display.warning{color:var(--danger);background:linear-gradient(135deg,rgba(245,87,108,.15) 0%,rgba(240,147,251,.15) 100%);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+.header-progress{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text-light);margin-bottom:4px}
+.progress-bar-container{height:6px;background:var(--border);border-radius:10px;overflow:hidden}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--primary) 0%,var(--secondary) 100%);transition:width .3s;border-radius:10px}
+
+/* ADJUSTED FOR SMALLER HEADER & NAV FOOTER */
+.question-section{position:fixed;top:105px;left:0;right:0;bottom:70px;overflow-y:auto;overflow-x:hidden;padding:15px;-webkit-overflow-scrolling:touch}
+.question-section.scrollable{scrollbar-width:thin;scrollbar-color:var(--primary) transparent}
+
+/* MODIFIED FONT SIZES FOR QUESTIONS/OPTIONS */
+.question-card{background:var(--bg-white);border-radius:20px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.06);max-width:800px;margin:0 auto}
+.question-number{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--primary);background:linear-gradient(135deg,rgba(102,126,234,.15) 0%,rgba(118,75,162,.15) 100%);padding:5px 10px;border-radius:20px;margin-bottom:12px}
+.question-reference{background:linear-gradient(135deg,rgba(79,172,254,.15) 0%,rgba(0,242,254,.15) 100%);border-left:4px solid var(--info);padding:10px 12px;border-radius:10px;margin-bottom:12px;font-size:12px;color:var(--text-dark);line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+.question-text{font-size:14px;font-weight:600;color:var(--text-dark);line-height:1.6;margin-bottom:16px;white-space:pre-wrap;word-wrap:break-word;word-break:break-word}
+.options-container{display:grid;gap:10px}
+.option-btn{width:100%;padding:12px 15px;background:var(--bg-light);border:2px solid var(--border);border-radius:12px;text-align:left;font-size:13px;color:var(--text-dark);cursor:pointer;transition:all .3s;display:flex;align-items:flex-start;gap:10px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word;word-break:break-word;user-select:none}
+.option-btn:active{transform:scale(.98)}
+.option-indicator{min-width:24px;height:24px;border-radius:50%;background:var(--bg-white);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;transition:all .3s}
+.option-text{flex:1;padding-top:2px}
+.option-btn:hover:not(.disabled){border-color:var(--primary);transform:translateX(4px)}
+.option-btn.selected{background:linear-gradient(135deg,rgba(102,126,234,.15) 0%,rgba(118,75,162,.15) 100%);border-color:var(--primary)}
+.option-btn.selected .option-indicator{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff;border-color:transparent}
+.option-btn.correct{background:linear-gradient(135deg,rgba(72,187,120,.15) 0%,rgba(72,187,120,.15) 100%);border-color:var(--success)}
+.option-btn.correct .option-indicator{background:var(--success);color:#fff;border-color:transparent}
+.option-btn.incorrect{background:linear-gradient(135deg,rgba(245,87,108,.15) 0%,rgba(245,87,108,.15) 100%);border-color:var(--danger)}
+.option-btn.incorrect .option-indicator{background:var(--danger);color:#fff;border-color:transparent}
+.option-btn.disabled{pointer-events:none;opacity:.6}
+.explanation-box{display:none;background:linear-gradient(135deg,rgba(254,245,231,.5) 0%,rgba(251,191,36,.2) 100%);border-left:4px solid var(--warning);border-radius:12px;padding:12px;margin-top:16px;animation:sd .3s ease-out}
+@keyframes sd{from{opacity:0;max-height:0;padding:0}to{opacity:1;max-height:500px;padding:12px}}
+.explanation-header{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#92400e;margin-bottom:8px}
+.explanation-text{font-size:12px;color:#78350f;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+[data-theme="dark"] .explanation-text{color:#fbbf24}
+.explanation-mode-control{display:flex;align-items:center;gap:5px;padding:4px 7px;border-radius:9px;background:var(--bg-light);border:1px solid var(--border);color:var(--text-light);font-size:10px;white-space:nowrap}
+.explanation-mode-control select{max-width:105px;border:1px solid var(--border);border-radius:6px;padding:5px 6px;background:var(--bg-white);color:var(--text-dark);font:600 11px 'Poppins',sans-serif;outline:none}
+.notes-panel{margin-top:16px;padding:14px;border:1px solid #d9dff2;border-radius:14px;background:#fffdf7;color:#222;box-shadow:0 3px 12px rgba(25,40,80,.08);user-select:text}
+.notes-banner{display:flex;align-items:center;gap:9px;padding:10px 12px;margin-bottom:12px;border-radius:10px;background:linear-gradient(135deg,#e8eef7,#f0e8f7);border:1px solid #b8c5e3;color:#243d70}
+.notes-banner-icon{font-size:22px}.notes-banner-title{font-size:14px;font-weight:800}.notes-banner-sub{font-size:10px;color:#64708a;margin-top:2px}
+.notes-section{border:1px solid var(--note-border,#cbd5e1);border-radius:9px;padding:11px 12px;margin:9px 0;background:var(--note-bg,#f7f9fd)}
+.notes-section h4{font-size:11px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:7px;color:var(--note-head,#254575)}
+.notes-section p,.notes-section li{font-size:12px;line-height:1.6;color:#303744;white-space:pre-wrap;overflow-wrap:anywhere}
+.notes-section ul{padding-left:18px}.notes-section li{margin:4px 0}
+.notes-section.definition{--note-border:#e4b84c;--note-bg:#fff8e1;--note-head:#805600}
+.notes-section.points{--note-border:#9db4de;--note-bg:#edf3fc;--note-head:#1a3a6b}
+.notes-section.timeline{--note-border:#8bc6c1;--note-bg:#e8f7f7;--note-head:#1a6b6b}
+.notes-section.terms{--note-border:#c8a4de;--note-bg:#f3eafa;--note-head:#5a1a8b}
+.notes-section.revision{--note-border:#9ac9a7;--note-bg:#eaf7ed;--note-head:#1a6b3a}
+.notes-empty{font-size:12px;color:#64748b;font-style:italic}
+@media(max-width:600px){.explanation-mode-control label{display:none}.explanation-mode-control select{max-width:88px}.notes-panel{padding:10px}}
+.nav-controls{position:fixed;bottom:0;left:0;right:0;background:var(--bg-white);padding:10px 16px;box-shadow:0 -2px 15px rgba(0,0,0,.08);display:flex;gap:10px;z-index:90}
+.nav-btn{flex:1;padding:12px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:6px}
+.nav-btn.primary{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff}
+.nav-btn.secondary{background:var(--bg-light);color:var(--text-dark);border:2px solid var(--border)}
+.nav-btn:active{transform:scale(.96)}
+.nav-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.question-nav-toggle{position:fixed;bottom:85px;right:20px;width:48px;height:48px;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;box-shadow:0 8px 20px rgba(102,126,234,.4);z-index:85;transition:all .3s}
+.question-nav-toggle:active{transform:scale(.95)}
+.question-nav-panel{position:fixed;bottom:0;left:0;right:0;background:var(--bg-white);border-radius:24px 24px 0 0;box-shadow:0 -4px 30px rgba(0,0,0,.15);z-index:95;max-height:70vh;overflow-y:auto;transform:translateY(100%);transition:transform .3s;padding:20px}
+.question-nav-panel.open{transform:translateY(0)}
+.nav-panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.nav-panel-title{font-size:16px;font-weight:700;color:var(--text-dark)}
+.nav-close-btn{width:32px;height:32px;background:var(--bg-light);border:none;border-radius:50%;font-size:16px;cursor:pointer;color:var(--text-light)}
+.nav-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;font-size:11px;color:var(--text-dark)}
+.legend-item{display:flex;align-items:center;gap:6px;color:var(--text-dark)}
+.legend-box{width:16px;height:16px;border-radius:4px}
+.legend-box.answered{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%)}
+.legend-box.marked{background:linear-gradient(135deg,var(--warning) 0%,#f59e0b 100%)}
+.legend-box.unanswered{background:var(--border)}
+.question-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.question-nav-item{aspect-ratio:1;border:2px solid var(--border);border-radius:8px;background:var(--bg-white);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;color:var(--text-light)}
+.question-nav-item:active{transform:scale(.95)}
+.question-nav-item.current{border-color:var(--primary);background:linear-gradient(135deg,rgba(102,126,234,.15) 0%,rgba(118,75,162,.15) 100%);color:var(--primary)}
+.question-nav-item.answered{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff;border-color:transparent}
+.question-nav-item.marked{background:linear-gradient(135deg,var(--warning) 0%,#f59e0b 100%);color:#fff;border-color:transparent}
+.question-nav-item.correct{background:linear-gradient(135deg,var(--success) 0%,#38a169 100%);color:#fff;border-color:transparent}
+.question-nav-item.incorrect{background:linear-gradient(135deg,var(--danger) 0%,#e53e3e 100%);color:#fff;border-color:transparent}
+#resultsContainer{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--bg-light);overflow-y:auto;overflow-x:hidden;padding:20px;z-index:1000}
+#resultsContainer.scrollable{scrollbar-width:thin;scrollbar-color:var(--primary) transparent}
+.results-header{text-align:center;padding:40px 20px;background:var(--bg-white);border-radius:20px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.results-icon{font-size:60px;margin-bottom:15px}
+.results-title{font-size:22px;font-weight:700;color:var(--text-dark);margin-bottom:8px}
+.results-score{font-size:44px;font-weight:800;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.results-percentage{font-size:18px;color:var(--text-light);font-weight:600}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto}
+.stat-card{background:var(--bg-white);padding:18px;border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px}
+.stat-icon.correct{background:linear-gradient(135deg,var(--success) 0%,#38a169 100%);color:#fff}
+.stat-icon.incorrect{background:linear-gradient(135deg,var(--danger) 0%,#e53e3e 100%);color:#fff}
+.stat-icon.unattempted{background:linear-gradient(135deg,#a0aec0 0%,#718096 100%);color:#fff}
+.stat-icon.negative{background:linear-gradient(135deg,#ed8936 0%,#dd6b20 100%);color:#fff}
+.stat-value{font-size:26px;font-weight:700;color:var(--text-dark);margin-bottom:2px}
+.stat-label{font-size:12px;color:var(--text-light);font-weight:500}
+.action-buttons{display:grid;gap:10px;max-width:800px;margin:0 auto}
+.action-btn{width:100%;padding:14px;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .3s}
+.action-btn.primary{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff}
+.action-btn.secondary{background:var(--bg-white);color:var(--text-dark);border:2px solid var(--border)}
+.action-btn:hover{transform:translateY(-2px)}
+
+@media (min-width: 1024px) {
+    body { overflow: auto !important; }
+    #quizContainer {
+        display: grid !important;
+        grid-template-columns: 1fr 320px;
+        grid-template-rows: auto 1fr auto;
+        gap: 0;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .quiz-header {
+        grid-column: 1 / -1;
+        position: static;
+        padding: 12px 20px;
+        border-bottom: 3px solid var(--border);
+    }
+    .header-top {
+        max-width: none;
+        margin-bottom: 10px;
+    }
+    .quiz-title-text { max-width: 400px; }
+    .timer-display {
+        padding: 6px 12px;
+        font-size: 15px;
+    }
+    .question-section {
+        position: static !important;
+        grid-column: 1;
+        grid-row: 2;
+        overflow-y: auto;
+        padding: 24px;
+        background: var(--bg-light);
+        top: auto !important;
+        bottom: auto !important;
+    }
+    .question-card {
+        max-width: 900px;
+        padding: 24px;
+        margin: 0 auto 20px;
+    }
+    .question-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .option-btn {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+    .option-indicator {
+        min-width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    .question-nav-panel {
+        position: static !important;
+        grid-column: 2;
+        grid-row: 2;
+        transform: none !important;
+        max-height: none;
+        height: 100%;
+        border-radius: 0;
+        border-left: 3px solid var(--border);
+        box-shadow: none;
+        padding: 24px;
+        overflow-y: auto;
+        background: var(--bg-white);
+    }
+    .question-nav-panel.open { transform: none !important; }
+    .nav-panel-header {
+        position: sticky;
+        top: 0;
+        background: var(--bg-white);
+        z-index: 10;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .nav-panel-title {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .nav-close-btn { display: none; }
+    .nav-legend {
+        position: sticky;
+        top: 60px;
+        background: var(--bg-white);
+        z-index: 9;
+        padding: 16px;
+        margin: -16px -16px 20px;
+        border-radius: 12px;
+        background: var(--bg-light);
+    }
+    .question-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .question-nav-item {
+        aspect-ratio: 1;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    .question-nav-toggle { display: none; }
+    .nav-controls {
+        position: static;
+        grid-column: 1;
+        grid-row: 3;
+        padding: 12px 20px;
+        border-top: 3px solid var(--border);
+        max-width: none;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+    .nav-btn {
+        min-width: 140px;
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+    #resultsContainer {
+        padding: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .results-header {
+        padding: 50px 30px;
+        margin-bottom: 24px;
+    }
+    .results-icon { font-size: 80px; }
+    .results-title { font-size: 30px; }
+    .results-score { font-size: 56px; }
+    .results-percentage { font-size: 20px; }
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+        max-width: none;
+    }
+    .stat-card { padding: 24px; }
+    .stat-icon { width: 48px; height: 48px; font-size: 20px; }
+    .stat-value { font-size: 32px; }
+    .stat-label { font-size: 13px; }
+    .action-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        max-width: 800px;
+    }
+    .action-btn { padding: 16px; font-size: 15px; }
+    .mode-container {
+        max-width: 600px;
+        padding: 40px 30px;
+    }
+    .mode-header-icon {
+        width: 76px;
+        height: 76px;
+        font-size: 36px;
+    }
+    .mode-header h2 { font-size: 26px; }
+    .mode-header p { font-size: 14px; }
+    .mode-cards { gap: 16px; }
+    .mode-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+    .mode-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 24px;
+        margin-right: 16px;
+    }
+    .mode-info h3 { font-size: 17px; }
+    .mode-info p { font-size: 13px; }
+    .timer-input { padding: 14px 16px; font-size: 15px; }
+    .start-btn { padding: 16px; font-size: 16px; }
+}
+
+@media (min-width: 1440px) {
+    #quizContainer {
+        grid-template-columns: 1fr 380px;
+    }
+    .question-section { padding: 32px 48px; }
+    .question-card { max-width: 1000px; padding: 32px; }
+    .question-nav-panel { padding: 32px; }
+    .question-grid { grid-template-columns: repeat(5, 1fr); }
+    .nav-controls { padding: 16px 48px; }
+}
+
+/* Mobile: scrollable bottom bar, Next/Submit at 3rd place */
+@media (max-width: 1023px) {
+    #quizContainer{height:100dvh}
+    .question-section{bottom:calc(72px + env(safe-area-inset-bottom))}
+    .nav-controls{overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;padding-bottom:calc(10px + env(safe-area-inset-bottom));scrollbar-width:thin}
+    .nav-controls .nav-btn{flex:0 0 auto;min-width:92px;white-space:nowrap;scroll-snap-align:start}
+    #pv{order:1} #mk{order:2} #nx,#sm{order:3} #ll-5050{order:4} #ll-poll{order:5} #ll-double{order:6}
+    .nav-controls > :not(.nav-btn){order:7}
+}
+</style>
+</head>
+<body class="theme-anime">
+<div id="modeSelection">
+<div class="mode-container">
+<div class="mode-header">
+<div class="mode-header-icon"><i class="fas fa-graduation-cap"></i></div>
+<h2>VAJIRAM CA 2026 = 1106</h2>
+<p>Choose your preferred test mode</p>
+</div>
+<div class="mode-cards">
+<div class="mode-card exam-mode" data-mode="exam">
+<div class="mode-card-header">
+<div class="mode-icon"><i class="fas fa-file-alt"></i></div>
+<div class="mode-info">
+<h3>Exam Mode</h3>
+<p>Complete all questions, results shown after submission</p>
+</div>
+</div>
+</div>
+<div class="mode-card practice-mode" data-mode="practice">
+<div class="mode-card-header">
+<div class="mode-icon"><i class="fas fa-book-open"></i></div>
+<div class="mode-info">
+<h3>Practice Mode</h3>
+<p>Instant feedback with detailed explanations</p>
+</div>
+</div>
+</div>
+</div>
+<div class="timer-config">
+<label for="ct"><i class="fas fa-clock"></i> Custom Timer (minutes)</label>
+<input type="number" id="ct" class="timer-input" placeholder="Default: ${Math.round(qd.tt / 60)} minutes" min="1" max="300"/>
+</div>
+<button class="start-btn" id="sb" disabled><i class="fas fa-play-circle"></i><span>Start Quiz</span></button>
+</div>
+</div>
+<div id="quizContainer">
+<div class="quiz-header">
+<div class="header-top">
+<div class="quiz-title">
+<i class="fas fa-clipboard-list"></i>
+<span class="quiz-title-text" title="VAJIRAM CA 2026 = 1106">VAJIRAM CA 2026 = 1106</span>
+<span class="mode-badge" id="mb"></span>
+</div>
+<div class="header-actions">
+<div class="explanation-mode-control" title="Choose how explanations appear under each question"><label for="explanationMode">Explanation</label><select id="explanationMode" onchange="setExplanationMode(this.value)"><option value="plain">Plain</option><option value="notes">Study Notes</option></select></div>
+<!-- Standalone TTS Controls -->
+<div style="display: flex; gap: 8px; font-size: 11px; align-items: center; color: var(--text-light); margin-right: 10px;">
+    <label style="display: flex; align-items: center; gap: 3px; cursor: pointer; user-select: none;">
+        <input type="checkbox" id="tts-read-q-p" style="accent-color: var(--primary);"> Q
+    </label>
+    <label style="display: flex; align-items: center; gap: 3px; cursor: pointer; user-select: none;">
+        <input type="checkbox" id="tts-read-exp-p" style="accent-color: var(--primary);"> Exp
+    </label>
+</div>
+<button class="theme-toggle" id="tt" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+<div class="timer-display" id="td"><i class="fas fa-clock"></i><span id="tt2">00:00</span></div>
+</div>
+</div>
+<div class="header-progress">
+<span id="pt">Question 1 of 100</span>
+<span id="at">Attempted: 0/100</span>
+</div>
+<div class="progress-bar-container"><div class="progress-bar" id="pb"></div></div>
+</div>
+<div class="question-section scrollable" id="qs"></div>
+<div class="nav-controls">
+<button class="nav-btn secondary" id="pv"><i class="fas fa-chevron-left"></i>Previous</button>
+<button class="nav-btn secondary" id="mk"><i class="fas fa-bookmark"></i>Mark</button>
+<!-- Lifelines Buttons -->
+<button class="nav-btn secondary" id="ll-5050" onclick="useLifeline('5050')" style="background: rgba(102,126,234,0.1); color: var(--primary); border-color: rgba(102,126,234,0.2);">🌓 50:50</button>
+<button class="nav-btn secondary" id="ll-poll" onclick="useLifeline('poll')" style="background: rgba(72,187,120,0.1); color: var(--success); border-color: rgba(72,187,120,0.2);">📊 Poll</button>
+<button class="nav-btn secondary" id="ll-double" onclick="useLifeline('double')" style="background: rgba(251,191,36,0.1); color: var(--warning); border-color: rgba(251,191,36,0.2);">2️⃣ Double</button>
+<button class="nav-btn primary" id="nx">Next<i class="fas fa-chevron-right"></i></button>
+<button class="nav-btn primary" id="sm" style="display:none"><i class="fas fa-paper-plane"></i>Submit</button>
+</div>
+<button class="question-nav-toggle" id="nt"><i class="fas fa-th"></i></button>
+<div class="question-nav-panel" id="np">
+<div class="nav-panel-header">
+<h3 class="nav-panel-title"><i class="fas fa-map-marked-alt"></i> Question Navigator</h3>
+<button class="nav-close-btn" id="nc"><i class="fas fa-times"></i></button>
+</div>
+<div class="nav-legend">
+<div class="legend-item"><div class="legend-box answered"></div><span>Answered</span></div>
+<div class="legend-item"><div class="legend-box marked"></div><span>Marked</span></div>
+<div class="legend-item"><div class="legend-box unanswered"></div><span>Not Answered</span></div>
+</div>
+<div class="question-grid" id="qg"></div>
+</div>
+</div>
+<div id="resultsContainer">
+<div class="results-header">
+<div class="results-icon" id="ri"></div>
+<h2 class="results-title" id="rt"></h2>
+<div class="results-score" id="rs"></div>
+<div class="results-percentage" id="rp"></div>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-icon correct"><i class="fas fa-check"></i></div><div class="stat-value" id="cc">0</div><div class="stat-label">Correct</div></div>
+<div class="stat-card"><div class="stat-icon incorrect"><i class="fas fa-times"></i></div><div class="stat-value" id="ic">0</div><div class="stat-label">Incorrect</div></div>
+<div class="stat-card"><div class="stat-icon unattempted"><i class="fas fa-minus"></i></div><div class="stat-value" id="uc">0</div><div class="stat-label">Unattempted</div></div>
+<div class="stat-card"><div class="stat-icon negative"><i class="fas fa-exclamation-triangle"></i></div><div class="stat-value" id="nm">0</div><div class="stat-label">Negative Marks</div></div>
+</div>
+<div class="action-buttons">
+<button class="action-btn primary" id="rb"><i class="fas fa-search"></i>Review Answers</button>
+<button class="action-btn secondary" id="rsb"><i class="fas fa-redo"></i>Restart Quiz</button>
+</div>
+</div>
+
+<!-- Standalone Audience Poll Modal -->
+<div id="pollModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter:blur(3px); z-index:99999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:var(--bg-white); border-radius:20px; padding:30px; max-width:400px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,0.2); color:var(--text-dark);">
+        <h3 style="text-align: center; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-chart-bar"></i> Audience Poll</h3>
+        <div id="pollBarsContainer" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;"></div>
+        <button class="nav-btn primary" onclick="document.getElementById('pollModal').style.display='none'" style="width:100%;">Close</button>
+    </div>
+</div>
+
+<script>
+const qd={"q":[{"id":0,"txt":"What is the primary function of Dendritic Nanotubes (DNTs), recently identified in the brain?","ref":"","opts":["Support axonal regeneration after injury","Regulate neurotransmitter synthesis","Transfer electrical signals between neurons","Protect neurons from oxidative stress"],"ci":2,"exp":"Ex: DNTs are tiny tubes, about 3 micrometers long, that connect dendrites of neighboring neurons. Researchers at Johns Hopkins University confirmed they transfer electrical signals by allowing charged particles like calcium ions to move between neurons. This process can be blocked by inhibiting nanotube formation with cytochalasin D. DNTs also transport molecules like amyloid-beta, suggesting a possible link to Alzheimer’s disease progression."},{"id":1,"txt":"With reference to the Mission for Aatmanirbharta in Pulses, consider the following — 1️⃣ It aims to achieve self-sufficiency in domestic pulses production by 2030-31 2️⃣ It provides for assured maximum procurement of Tur, Urad, and Masoor under the Price Support Scheme","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":2,"exp":"Ex: The Union Cabinet approved this six-year central scheme with an outlay of ₹11,440 crore to make India self-sufficient in pulses by 2030-31. It targets increasing production to 350 lakh tonnes by expanding cultivation area and improving yields. The mission focuses on tur, urad, and masur, with assured procurement by NAFED and NCCF under the Price Support Scheme (PSS)."},{"id":2,"txt":"Which of the following missions provides earth observation data useful for monitoring land deformation, biomass, and glaciers? — 1️⃣ ISRO PSLV-C61 2️⃣ Axiom Mission 3️⃣ NISAR Mission","ref":"","opts":["I, II and III","III only","II and III only","I and II only"],"ci":1,"exp":"Ex: NISAR is a joint Earth observation mission between NASA and ISRO using dual-frequency radar for high-resolution imagery. Its objectives include monitoring land deformation (earthquakes, landslides), measuring biomass changes, and tracking glaciers. PSLV-C61 is a launch vehicle mission, not an observation mission. Axiom refers to private astronaut missions to the ISS for scientific research."},{"id":3,"txt":"The HKU5 virus is sometimes mentioned in the news with reference to which one of the following diseases?","ref":"","opts":["Severe Acute Respiratory Syndrome","Hantavirus Pulmonary Syndrome","Middle East Respiratory Syndrome","Bronchopulmonary Dysplasia Syndrome"],"ci":2,"exp":"Ex: The bat Merbecovirus HKU5 belongs to the same group as Middle East Respiratory Syndrome coronavirus (MERS-CoV). They share structural similarities and use similar receptors to infect cells. While HKU5 has only been detected in bats, studies warn it has the potential to infect human cells with just one mutation. Current MERS-CoV vaccines show limited effectiveness against HKU5."},{"id":4,"txt":"This festival is celebrated for nine days, overlapping with Navratri, and symbolizes the collective spirit of the people of Telangana. Recently, it set two Guinness World Records for the largest floral arrangement and a synchronised dance performance by women. The festival is:","ref":"","opts":["Bonalu","Bathukamma","Medaram Jatara","Kondagattu Anjaneya"],"ci":1,"exp":"Ex: Bathukamma, meaning \"The Mother Goddess comes to life,\" is dedicated to Gauri Devi and celebrated in Telangana. In 2025, it achieved record status for the largest floral decoration (7 tonnes of flowers) and a synchronized performance by 1,354 women. During the festival, women stack local exotic flowers in conical arrangements on wide plates."},{"id":5,"txt":"With reference to the recently constituted Payments Regulatory Board (PRB), consider the following — 1️⃣ It is a six-member body chaired by the Finance Secretary 2️⃣ It derives its powers from the Payment and Settlement Systems Act, 2007 3️⃣ It regulates all electronic and non-electronic payment systems","ref":"","opts":["I only","I and III only","II and III only","I, II and III"],"ci":2,"exp":"Ex: The RBI set up the PRB to replace the Board for Regulation and Supervision of Payment and Settlement Systems (BPSS). It is chaired by the RBI Governor, not the Finance Secretary. It derives legal authority from the Payment and Settlement Systems Act, 2007. The board regulates all electronic and non-electronic payment systems, including domestic and cross-border transactions."},{"id":6,"txt":"Trichloroethylene (TCE), a cause of concern in recent times for its environmental and health impacts, is mainly used as — 1️⃣ A chemical intermediate in the manufacturing of refrigerants 2️⃣ A degreasing solvent in metal industry 3️⃣ A fertilizer additive in agriculture 4️⃣ A spot remover in commercial dry-cleaning","ref":"","opts":["I, III and IV only","II and III only","I, II and IV only","I, II, III and IV"],"ci":2,"exp":"Ex: TCE is a volatile synthetic chemical used as an intermediate to produce refrigerants and hydrofluorocarbons. It is widely used for degreasing machinery and precision equipment in the metal industry. It is also a spot remover for grease and oil stains in commercial dry cleaning. It is not used as a fertilizer additive. Long-term exposure is linked to Parkinson’s disease."},{"id":7,"txt":"The region often referred to as the 'Amazon of the Seas' extends across the tropical waters of — 1️⃣ Philippines 2️⃣ Maldives 3️⃣ Malaysia 4️⃣ Papua New Guinea","ref":"","opts":["I, II, III and IV","II, III and IV only","I, III and IV only","III and IV only"],"ci":2,"exp":"Ex: The Coral Triangle, known as the \"Amazon of the Seas,\" covers 5.7 million sq. km in the western Pacific. It is home to 75% of world coral species. The core countries are Indonesia, Malaysia, Papua New Guinea, the Philippines, Solomon Islands, and Timor-Leste. The Maldives is in the Indian Ocean and is not part of this region."},{"id":8,"txt":"With reference to the Ig Nobel Prizes, consider the following — 1️⃣ They are awarded by the Royal Swedish Academy of Sciences 2️⃣ They are awarded once every five years to promote scientific research 3️⃣ They are given in several categories, including Peace and Psychology 4️⃣ In 2025, two Indian scientists received the award in the Engineering Design category","ref":"","opts":["III and IV only","I, II and III only","I, II and IV only","I, II, III and IV"],"ci":0,"exp":"Ex: Ig Nobel Prizes are satirical awards presented annually by the magazine Annals of Improbable Research in Boston, not the Royal Swedish Academy. Categories often mirror the Nobels but with humorous twists. In 2025, Indian scientists Vikash Kumar and Sarthak Mittal won in Engineering Design for research on how foul-smelling shoes affect shoe rack experiences."},{"id":9,"txt":"Recently, there were deaths of children in Madhya Pradesh and Rajasthan linked to contaminated cough syrup. In this context, Diethylene Glycol is mainly used in cough syrup for which one of the following reasons?","ref":"","opts":["It acts as a strong sedative.","It acts as a toxic solvent.","It increases the viscosity of syrups.","It serves as a substitute of glycerin."],"ci":3,"exp":"Ex: Diethylene glycol (DEG) is an industrial solvent used in antifreeze and brake fluids. It is sometimes illegally substituted for pharmaceutical-grade glycerin in cough syrups because it is cheaper. When ingested, it is highly toxic and causes acute kidney injury, renal failure, and multi-organ dysfunction. Contaminated syrups have been linked to over 300 child deaths globally since 2022."},{"id":10,"txt":"International Social Security Association (ISSA), works under which of the following organizations?","ref":"","opts":["World Economic Forum (WEF)","Organisation for Economic Co-operation and Development (OECD)","International Labour Organization (ILO)","World Bank (WB)"],"ci":2,"exp":"Ex: Founded in 1927, the ISSA promotes excellence in social security administration through guidelines and research. It operates under the auspices of the International Labour Organization (ILO). Headquartered in Geneva, it has over 330 member organizations across 158 countries, including India. India received the ISSA Award 2025 for outstanding achievements in providing social security."},{"id":11,"txt":"Consider the following pairs — 1️⃣ JF-17 Thunder: USA 2️⃣ Mirage 2000: France 3️⃣ F-22 Raptor: United Kingdom 4️⃣ Shenyang J-35: Japan","ref":"","opts":["Only one","Only two","Only three","All the four"],"ci":0,"exp":"Ex: The Mirage 2000 is a French-made multirole fighter used by the Indian Air Force. The JF-17 Thunder was jointly developed by China and Pakistan. The F-22 Raptor is an American fifth-generation stealth fighter. The Shenyang J-35 is a Chinese stealth multirole combat aircraft. Only Pair II is correctly matched."},{"id":12,"txt":"Consider the following statements with regard to the Preventive Detention in India — 1️⃣ The Constitutional protection against preventive detention extends to both citizens and non-citizens 2️⃣ A person detained under preventive detention must be informed of the grounds for such detention as a matter of right","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":2,"exp":"Ex: Preventive detention under Article 22 involves confining a person to prevent future offenses rather than punishing past acts. Protections apply to both citizens and non-citizens, though Article 22(3) excludes enemy aliens and those detained under preventive laws from specific clauses. Communicating grounds for detention is mandatory, though facts may be withheld if disclosure is against public interest."},{"id":13,"txt":"The highest motorable road in the world was recently built in Ladakh at which one of the following passes?","ref":"","opts":["Khardung La","Umling La","Mig La","Chang La"],"ci":2,"exp":"Ex: The Border Roads Organisation (BRO) constructed the world’s highest motorable road at Mig La Pass at 19,400 feet. This broke the previous record of 19,024 feet at Umling La. Developed under Project Himank, the Likaru-Mig La-Fukche road is strategically vital due to its proximity to the Line of Actual Control (LAC)."},{"id":14,"txt":"The term 'Supermoon', sometimes mentioned in the news, refers to which one of the following?","ref":"","opts":["The alignment of the Sun, Earth, and Moon causing a total solar eclipse","A full moon that occurs when the Moon is at its farthest point from Earth","A full or new moon that coincides with the Moon's closest approach to Earth","A lunar event visible only during equinoxes when the Moon crosses the Earth's equatorial plane"],"ci":2,"exp":"Ex: A Supermoon occurs when a full or new moon coincides with the Moon’s closest approach to Earth (perigee) in its elliptical orbit. At perigee, the Moon appears up to 14% larger and 30% brighter than at apogee. These events also strengthen gravitational interactions, resulting in perigean spring tides that slightly raise coastal water levels."},{"id":15,"txt":"Consider the following statements with regard to the Marine Stewardship Council (MSC) — 1️⃣ It sets global standards for sustainable fishing and seafood traceability 2️⃣ Its certification applies to aquaculture fisheries as well as wild-capture fisheries 3️⃣ The Ashtamudi clam fishery in Kerela was the first in India to be awarded the MSC certification","ref":"","opts":["I and II only","I and III only","III only","I, II and III"],"ci":1,"exp":"Ex: The MSC is a non-profit that sets science-based standards for sustainable wild-capture fishing. It does not certify aquaculture; the Aquaculture Stewardship Council (ASC) handles that sector. MSC uniquely incorporates FAO frameworks for wild-capture fisheries. The Ashtamudi clam fishery in Kerala was India's first to receive this certification."},{"id":16,"txt":"With reference to the recently launched Foreign Currency Settlement System, consider the following — 1️⃣ It was established under the Payment and Settlement Systems Act, 2007 2️⃣ It is operated by the Reserve Bank of India as part of its global settlement framework 3️⃣ It supports settlements only in US dollar, reflecting its dominant role in global trade and finance","ref":"","opts":["I only","II and III only","I and II only","II only"],"ci":0,"exp":"Ex: The FCSS enables local settlement of foreign currency transactions at GIFT IFSC, reducing settlement time from 48 hours to near real-time. It was established under the Payment and Settlement Systems Act, 2007. It is operated by CCIL IFSC Limited, not directly by the RBI. While it initially supports US dollars, the framework allows for future inclusion of other major currencies."},{"id":17,"txt":"A startup valued at over $1 billion and not listed on the stock exchange is known as a:","ref":"","opts":["Soonicorn","Decacorn","Unicorn","Hectocorn"],"ci":2,"exp":"Ex: A unicorn is a privately owned startup valued at over $1 billion. Key traits include high growth potential and disruptive technology. Other terms include \"Soonicorns\" (valued $500M–$1B), \"Decacorns\" (over $10B), and \"Hectocorns\" (over $100B). As of 2025, India has 73 unicorns, making it the world's third-largest startup ecosystem."},{"id":18,"txt":"With reference to the Pradhan Mantri Kisan Urja Suraksha evam Utthan Mahabhiyan Scheme (PM-KUSUM), consider the following — 1️⃣ It aims to provide free or subsidised electricity to farmers through the installation of rooftop solar systems 2️⃣ It targets to add solar capacity of about 34,800 MW by March 2026 3️⃣ Its beneficiaries include only individual farmers and not any group of farmers","ref":"","opts":["I and II only","II only","I and III only","I, II and III"],"ci":1,"exp":"Ex: PM-KUSUM solarizes agricultural pumps and encourages decentralized generation; free rooftop solar for households falls under PM-Surya Ghar. The scheme targets 34,800 MW of solar capacity by March 2026. Beneficiaries include individual farmers, FPOs, Panchayats, and Co-operatives, not just individuals."},{"id":19,"txt":"With reference to the Union Public Service Commission (UPSC), consider the following — 1️⃣ Part XX of the Constitution deals with the composition and functions of the UPSC 2️⃣ It was set up based on the recommendations of the Lee Commission (1924) 3️⃣ Its first Indian Chairman after Independence was H. K. Kripalani","ref":"","opts":["I and II only","III only","II and III only","I, II and III"],"ci":2,"exp":"Ex: Articles 315 to 323 in Part XIV (not Part XX) deal with the UPSC. The commission was established on October 1, 1926, following Lee Commission recommendations. H.K. Kripalani became the first Indian Chairman after independence, serving from 1947 to 1949. The UPSC marked its centenary year starting October 2025."},{"id":20,"txt":"Which of the following features distinguish Tejas Mk1A from the earlier Tejas Mk1 version? — 1️⃣ 4.5 generation aircraft 2️⃣ Advanced electronically scanned array radar 3️⃣ Delta wing design 4️⃣ Integration with Astra missile system","ref":"","opts":["I, II and III only","II, III and IV only","I, II and IV only","I and IV only"],"ci":2,"exp":"Ex: Tejas Mk1A is a 4.5-generation fighter, whereas the original Mk1 is 4th-generation. Key upgrades in Mk1A include an AESA radar (initially Israeli EL/M-2052) and compatibility with the indigenous Astra BVR missile. The delta wing design is a common feature in both variants and does not distinguish them."},{"id":21,"txt":"With reference to the Crew Escape System (CES), consider the following — 1️⃣ It is an emergency escape system that pulls the crew module with astronauts to a safe distance in case of launch failure 2️⃣ India's Gaganyaan mission will employ a Puller-type Crew Escape System","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":2,"exp":"Ex: The CES is a safety mechanism to ensure astronaut survival during launch emergencies by propelling the crew module away from a malfunctioning vehicle. India’s Gaganyaan uses a Puller-type CES (using solid motors), a design shared with Saturn V and Soyuz. ISRO validated this using a single-stage test vehicle powered by a Vikas engine."},{"id":22,"txt":"Mission Drishti, recently seen in the news, is related to:","ref":"","opts":["India's first interplanetary communication satellite for Mars missions","World's first multi-sensor Earth Observation (EO) satellite","India's first underground neutrino observatory for studying neutrinos","A deep-space telescope mission jointly developed by ISRO and NASA"],"ci":1,"exp":"Ex: Mission Drishti is the world’s first multi-sensor Earth Observation satellite developed by Bengaluru startup GalaxEye. It is India's largest and highest-resolution privately built satellite (1.5-metre resolution). It carries both Synthetic Aperture Radar (SAR) and optical payloads, allowing all-weather imaging for defense, disaster management, and agriculture."},{"id":23,"txt":"Consider the following statements with regard to the Nobel Peace Prize — 1️⃣ Self-nomination leads to automatic disqualification 2️⃣ Nominations for the Nobel Peace Prize remain confidential for 50 years after submission 3️⃣ In 2025, it was awarded to Maria Corina Machado for her efforts to promote democracy in Venezuela 4️⃣ It is the only one which is awarded in Sweden among all Nobel Prizes","ref":"","opts":["I, II and III only","II and IV only","I, III and IV only","I, II, III and IV"],"ci":0,"exp":"Ex: Self-nomination is prohibited, and all nominations are kept secret for 50 years. In 2025, María Corina Machado won for her democratic struggle in Venezuela. All Nobel Prizes are awarded in Stockholm, Sweden, except for the Peace Prize, which is awarded in Oslo, Norway. Statement IV is thus incorrect."},{"id":24,"txt":"The Global Antibiotic Resistance Surveillance Report is published by:","ref":"","opts":["World Health Organization (WHO)","Global Health Security Agenda (GHSA)","Global Antibiotic Research and Development Partnership (GARDP)","United Nations Children's Fund (UNICEF)"],"ci":0,"exp":"Ex: The WHO releases this report under its Global Antimicrobial Resistance and Use Surveillance System (GLASS). The 2025 report analyzed 23 million confirmed cases from over 100 countries. AMR causes approximately 1.27 million global deaths annually due to antibiotic misuse in humans and agriculture."},{"id":25,"txt":"Consider the following pairs — 1️⃣ Upper Subansiri: Arunachal Pradesh 2️⃣ Kiru: Sikkim 3️⃣ Naying: Assam 4️⃣ Etalin: Arunachal Pradesh","ref":"","opts":["Only one","Only two","Only three","All the four"],"ci":1,"exp":"Ex: Upper Subansiri (1,800 MW) and Etalin (3,097 MW) are both in Arunachal Pradesh. Kiru is a run-of-the-river project on the Chenab River in Jammu and Kashmir, not Sikkim. Naying (1,000 MW) is located on the Siyom River in Arunachal Pradesh, not Assam. Only pairs I and IV are correct."},{"id":26,"txt":"Consider the following statements with regard to International Blue Flag Certification — 1️⃣ It is awarded only to beaches located within marine protected areas 2️⃣ It is accorded by the United Nations Environment Programme (UNEP) 3️⃣ Shrivardhan and Nagaon beaches in Maharashtra received the certification in 2025","ref":"","opts":["I only","II and III only","I and III only","III only"],"ci":3,"exp":"Ex: Blue Flag is awarded by the Foundation for Environmental Education (FEE) in Denmark, not UNEP. It is not limited to marine protected areas; it covers beaches and marinas meeting 33 criteria. In October 2025, five Maharashtra beaches, including Shrivardhan and Nagaon, received this certification."},{"id":27,"txt":"Consider the following statements with regard to the Pradhan Mantri Dhan-Dhaanya Krishi Yojana (PMDDKY) — 1️⃣ It consolidates existing agricultural schemes including PM-KISAN and Pradhan Mantri Fasal Bima Yojana 2️⃣ It aims to transform 100 low-performing agricultural districts across India 3️⃣ At local level, it is operated by the District Dhan Dhaanya Samitis led by District Collectors","ref":"","opts":["I and II only","II and III only","I and III only","I, II and III"],"ci":3,"exp":"Ex: PMDDKY integrates 36 schemes across 11 ministries, including PM-KISAN and RKVY. Modeled after the Aspirational Districts Programme, it targets 100 underperforming agricultural districts. Local implementation is managed by District Dhan Dhaanya Samitis led by collectors, with monthly monitoring of 117 Key Performance Indicators."},{"id":28,"txt":"Which one of the following separates the Rann of Kutch in Gujarat from Pakistan's Sindh Province?","ref":"","opts":["Thar Desert","Sir Creek","Indus Delta","Gulf of Kutch"],"ci":1,"exp":"Ex: Sir Creek, originally 'Ban Ganga,' is a 96-km estuary marking the boundary between Gujarat and Pakistan’s Sindh. The dispute stems from conflicting interpretations of a 1914 British resolution. Pakistan claims the boundary lies on the eastern bank (green line), while India claims it follows the mid-channel (blue dotted line)."},{"id":29,"txt":"Consider the following pairs — 1️⃣ False Smut: Fungal disease in rice 2️⃣ Leptospirosis: Bacterial infection found in contaminated water 3️⃣ Crohn's disease: Chronic inflammatory bowel disease 4️⃣ Keratoconus: Progressive neurodegenerative disorder","ref":"","opts":["Only one","Only two","Only three","All the four"],"ci":2,"exp":"Ex: False smut is a rice fungal disease caused by Ustilaginoidea virens. Leptospirosis is a bacterial disease transmitted via animal urine in water or soil. Crohn’s is a chronic inflammatory bowel disease. Keratoconus is an eye condition where the cornea thins and bulges, not a neurodegenerative disorder; Parkinson's fits that description. Pairs I, II, and III are correct."},{"id":30,"txt":"Consider the following pairs — 1️⃣ PRIP Scheme: Provides 100% funding for all private startups in pharma sector 2️⃣ PM-SETU Scheme: Provides financial support to students for upgrading skills 3️⃣ PM Vishwakarma: Supports artisans with credit and toolkit","ref":"","opts":["Only one","Only two","All the three","None"],"ci":0,"exp":"Ex: PM Vishwakarma supports artisans with toolkits (₹15,000 e-vouchers), training stipends (₹500/day), and collateral-free loans. PRIP financial assistance for early projects is 100% only up to ₹1 crore, with 50% for additional costs. PM-SETU modernizes ITIs but does not provide direct financial support or allowances to individual students. Only Pair III is correct."},{"id":31,"txt":"With reference to recent military exercises involving India, consider the following pairs — 1️⃣ Drone Kavach: United States 2️⃣ Passage Exercise (PASSEX): Russia 3️⃣ KONKAN-25: United Kingdom 4️⃣ Bold Kurukshetra: Singapore","ref":"","opts":["Only one","Only two","Only three","None"],"ci":1,"exp":"Ex: KONKAN-25 is a bilateral maritime exercise with the UK. Bold Kurukshetra 2025 is a joint military exercise with Singapore. Drone Kavach was an internal exercise by the Indian Army’s Spear Corps, not a joint one with the US. The June 2025 PASSEX was conducted with the UK's Royal Navy, not Russia. Pairs III and IV are correct."},{"id":32,"txt":"With reference to the Green Sea Turtle, consider the following — 1️⃣ It is categorised as endangered in the IUCN Red List 2️⃣ It is a keystone marine species found in tropical and subtropical waters","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":1,"exp":"Ex: The Green Sea Turtle's IUCN Red List status improved from Endangered to Least Concern due to sustained conservation efforts. It is a keystone species essential for maintaining coral reefs and seagrass meadows in tropical and subtropical waters. Statement I is thus incorrect."},{"id":33,"txt":"Which one of the following rivers forms part of the international boundary between India and Bangladesh?","ref":"","opts":["Ichamati","Manjeera","Bhavani","Damodar"],"ci":0,"exp":"Ex: The Ichamati River is a transboundary tidal river shared by West Bengal (India) and Bangladesh. Originating in Nadia district, it flows for 216 km and serves as a vital international boundary and lifeline for local communities. It remains famous for the traditional Durga idol immersion ceremony involving both nations."},{"id":34,"txt":"Indian Pangolin is found in which of the following protected areas? — 1️⃣ Kanha Tiger Reserve 2️⃣ Asola Bhatti Wildlife Sanctuary 3️⃣ Male Mahadeshwara Hills Wildlife Sanctuary 4️⃣ Sathyamangalam Tiger Reserve","ref":"","opts":["I and II only","I, III and IV only","II, III and IV only","I, II, III and IV"],"ci":3,"exp":"Ex: The Indian Pangolin is widely distributed across various protected areas, including Kanha (Madhya Pradesh), Asola Bhatti (Delhi), Male Mahadeshwara Hills (Karnataka), and Sathyamangalam (Tamil Nadu). These parks support various mammals like tigers, leopards, and gaurs alongside the pangolin."},{"id":35,"txt":"Which one of the following is the correct descending order of countries by the size of their official government/central banks gold reserves? — 1️⃣ USA 2️⃣ India 3️⃣ China 4️⃣ Germany","ref":"","opts":["I-III-II - IV","III-I-II - IV","I-IV-III - II","III-II-I - IV"],"ci":2,"exp":"Ex: As of August 2025, the order is USA (8,133.5 tonnes), Germany (3,350.3 tonnes), China (2,302.3 tonnes), and India (880 tonnes). The USA holds the largest reserves, constituting 78.7% of its total foreign reserves. India ranks ninth globally, with gold accounting for 13.8% of its reserves."},{"id":36,"txt":"With reference to the World Commission on Protected Areas (WCPA), consider the following — 1️⃣ It is a technical commission of the International Union for Conservation of Nature (IUCN) 2️⃣ It presents the Kenton R. Miller Award for impactful innovation in the management of protected areas","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":2,"exp":"Ex: The WCPA is one of six technical commissions of the IUCN, established in 1948. It presents the Kenton R. Miller Award every two years for innovations in protected area management. In 2025, Sonali Ghosh (Kaziranga Director) became the first Indian recipient of this award."},{"id":37,"txt":"'Steadfast Noon' is an annual nuclear deterrence exercise conducted by which one of the following groups?","ref":"","opts":["European Union (EU)","North Atlantic Treaty Organization (NATO)","Quadrilateral Security Dialogue (QUAD)","Shanghai Cooperation Organisation (SCO)"],"ci":1,"exp":"Ex: Steadfast Noon is an annual NATO exercise for training air forces in handling U.S. nuclear weapons stored in Europe. No live weapons are used, but the drills test operational coordination and deterrence strategy. The 2025 exercise was hosted by the Netherlands, primarily at Volkel Air Base."},{"id":38,"txt":"\"Mera Hou Chongba Festival\" belongs to which one of the following States?","ref":"","opts":["Nagaland","Mizoram","Sikkim","Manipur"],"ci":3,"exp":"Ex: Mera Hou Chongba is celebrated in Manipur on the 15th lunar day of the Meitei month of Mera. It is the only festival involving all indigenous communities (hill and valley), symbolizing unity and harmony. The titular King leads rituals at Kangla, including an exchange of gifts between tribal chiefs and the royal palace."},{"id":39,"txt":"Methamphetamine, sometimes seen in the news, is known for which one of the following characteristics?","ref":"","opts":["It is a naturally occurring alkaloid used in traditional medicine.","It is a vaccine developed for the treatment of viral encephalitis.","It is a biological pesticide used in organic farming.","It is a highly addictive stimulant that affects the central nervous system."],"ci":3,"exp":"Ex: Methamphetamine is a synthetic stimulant that increases dopamine levels, causing euphoria and alertness. Long-term use results in severe risks like \"meth mouth,\" memory loss, psychosis, and addiction. UNODC reported a record 236 tons seized last year, with 94% occurring in Southeast Asia."},{"id":40,"txt":"Consider the following statements regarding Limestone — Statement I: Limestone mine leaseholders in India can sell or utilize limestone for any purpose without regulatory restrictions. Statement II: The Government of India has classified limestone as a major mineral.","ref":"","opts":["Both Statement I and Statement II are correct and Statement II explains Statement I","Both Statement I and Statement II are correct, but Statement II does not explain Statement I","Statement I is correct but Statement II is incorrect","Statement I is incorrect but Statement II is correct"],"ci":0,"exp":"Ex: The Centre classified limestone entirely as a major mineral, removing the distinction between minor (kiln use) and major (industrial use) categories. This classification under the MMDR Act allows leaseholders to sell or use it for any purpose without end-use restrictions. Statement II thus explains the freedom noted in Statement I."},{"id":41,"txt":"What is Maitri-II, recently seen in the news?","ref":"","opts":["It is India's first automated and remotely operated research base in Antarctica.","It is a newly launched coastal surveillance radar system deployed by the Indian Navy.","It is a high-capacity electric train project being developed under Indian Railways.","It is ISRO's next-generation Earth-observation satellite designed for climate monitoring."],"ci":0,"exp":"Ex: Maitri-2 is India's fourth planned research station in Antarctica, set to replace the aging Maitri station by 2029. Located in East Antarctica, it will accommodate 90 scientists and use automated instruments to relay data to India even when unmanned. It will support advanced studies in climate change and biodiversity."},{"id":42,"txt":"Which one of the following best describes the system of run-off election sometimes mentioned in the context of presidential democracies?","ref":"","opts":["It is an election held when no candidate secures a majority in the first round of voting.","It is an election conducted to fill a vacant legislative seat before the normal term ends.","It is an election held to choose a new leader when the incumbent resigns or is removed from office.","It is an election conducted when the parliament decides to dissolve itself before completing its term."],"ci":0,"exp":"Ex: A run-off election is a second round of voting between the top two candidates from the first round. It is held only if no candidate achieves the required majority initially. This system is common in presidential republics to ensure the winner has broad support. Recently, opposition leader Herminie won in Seychelles via a runoff."},{"id":43,"txt":"Recently, the International Union for Conservation of Nature (IUCN) published an updated version of the Red List of Threatened Species. In this regard, consider the following — 1️⃣ Over half of all species assessed by the Red List are now classified as 'threatened with extinction' 2️⃣ About 11.5% of bird species assessed are globally threatened, and most species show declining populations","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":1,"exp":"Ex: The updated Red List includes 172,620 species, of which 48,646 (roughly 28%, not over half) are threatened with extinction. Among 11,185 assessed bird species, 11.5% are globally threatened and 61% show declining populations. Six species, including the Christman Island shrew and slender-billed curlew, were moved to the Extinct category."},{"id":44,"txt":"Which of the following countries share land border with Mongolia? — 1️⃣ Russia 2️⃣ China 3️⃣ Kazakhstan 4️⃣ Kyrgyzstan","ref":"","opts":["I and II only","II and IV only","I and IV only","I, II and III only"],"ci":0,"exp":"Ex: Mongolia is a landlocked country sharing borders only with China and Russia. While Kazakhstan is the next closest nation (only 23 miles away), it does not share a land border. Kyrgyzstan is separated from Mongolia by China. The President of Mongolia visited India in 2025 to mark 70 years of diplomatic ties."},{"id":45,"txt":"Consider the following statements with regard to the Surrogacy (Regulation) Act, 2021 — 1️⃣ It prohibits commercial surrogacy but permits altruistic surrogacy 2️⃣ The age cap will not apply to couples with frozen embryos before the commencement of the Act","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":2,"exp":"Ex: The Act permits altruistic surrogacy (no monetary benefit except medical/insurance) to prevent exploitation. It sets age limits: women 23-50 and men 26-55. The Supreme Court recently ruled that these age limits do not apply to couples who froze embryos and started the process before the law took effect on January 25, 2022."},{"id":46,"txt":"Consider the following pairs — 1️⃣ Tikhir: Nagaland 2️⃣ Siddi: Gujarat 3️⃣ Soliga: Assam 4️⃣ Kolam: Kerala","ref":"","opts":["Only two","Only three","All the four","Only one"],"ci":0,"exp":"Ex: The Tikhir are an indigenous tribe from Nagaland. Siddis are an Afro-Indian community found in Gujarat, Karnataka, and Goa. Soliga tribes are forest-dwellers in Karnataka and Tamil Nadu, not Assam. Kolam tribes reside in Madhya Pradesh, Maharashtra, and Andhra Pradesh, not Kerala. Only pairs I and II are correct."},{"id":47,"txt":"Which one of the following countries has become the first in the world to achieve 'triple elimination' of mother-to-child transmission of HIV, Syphilis and Hepatitis B?","ref":"","opts":["Maldives","Mauritius","Iceland","Indonesia"],"ci":0,"exp":"Ex: The WHO validated the Maldives for eliminating mother-to-child transmission of hepatitis B, adding to its existing validation for HIV and syphilis. This makes it the first country globally to achieve 'triple elimination'. Success was driven by universal testing and near-total antenatal care coverage for pregnant women."},{"id":48,"txt":"Consider the following statements — Statement-I: Rhodamine B is widely used in textiles, paper and leather industries. Statement-II: Rhodamine B makes the color durable and more resistant to fading over time.","ref":"","opts":["Both Statement I and Statement II are correct and Statement II explains Statement-I.","Both Statement I and Statement II are correct, but Statement II does not explain Statement I.","Statement I is correct but Statement II is incorrect.","Statement I is incorrect, but Statement II is correct."],"ci":0,"exp":"Ex: Rhodamine B is a synthetic dye used in textiles and leather due to its vivid pink hue and durability against fading. Its water solubility allows for uniform application in industrial processes. While useful industrially, it is toxic if consumed, potentially causing DNA damage and tumors in the liver and bladder."},{"id":49,"txt":"Consider the following statements regarding the Somnath temple — 1️⃣ It was built in the traditional Chaulukya style of architecture 2️⃣ It is situated at a Triveni sangam of three rivers - Kapila, Hiran and Sarasvati 3️⃣ Its most recent reconstruction was completed in 1951 by Vallabhbhai Patel","ref":"","opts":["I and II only","II and III only","I and III only","I, II and III"],"ci":3,"exp":"Ex: Somnath is considered the first of the twelve jyotirlingas. The present temple was reconstructed in the Chaulukya style and completed in May 1951, a project led by Vallabhbhai Patel. It is located at the Triveni sangam, the confluence of the Kapila, Hiran, and Sarasvati rivers."},{"id":50,"txt":"The Doctrine of 'SAMADHAN' represents a comprehensive framework of the Government of India to counter:","ref":"","opts":["insurgencies in the north-eastern India","left-wing extremism","cross-border challenges with Bangladesh","tackling the narcotics trade"],"ci":1,"exp":"Ex: SAMADHAN was formulated by the MHA in 2017 to counter Naxalism. The acronym stands for Smart Leadership, Aggressive Strategy, Motivation, Actionable Intelligence, Dashboard-based KPIs, Harnessing Technology, Action Plan for each theatre, and No access to financing. LWE violence has reduced by over 75% since 2010 due to these principles."},{"id":51,"txt":"Which of the following factors are considered by the Commission for Agricultural Costs and Prices (CACP) while recommending the Minimum Support Price (MSP)? — 1️⃣ Cost of production 2️⃣ Demand-supply situation of various crops 3️⃣ Inter-crop price parity 4️⃣ Terms of trade between the agriculture and non-agriculture sectors 5️⃣ Margin of at least 50% over the cost of production","ref":"","opts":["I and III only","II, III and IV only","II, IV and V only","I, II, III, IV and V"],"ci":3,"exp":"Ex: CACP analyzes costs (A2, A2+FL, C2), market demand-supply, and inter-crop parity to ensure cropping balance. It considers the \"terms of trade\" to protect farmers' purchasing power relative to the industrial sector. Per 2018 policy, MSP is fixed at a minimum 50% margin over the A2+FL cost of production."},{"id":52,"txt":"The Sustainable Aquaculture in Mangrove Ecosystems (SAIME) initiative, recently seen the news, is an initiative by:","ref":"","opts":["International Society for Mangrove Ecosystem","Global Mangrove Alliance","Nature Environment and Wildlife Society","Mangrove Action Project"],"ci":2,"exp":"Ex: SAIME was conceptualized by the Nature Environment and Wildlife Society (NEWS), a Kolkata-based NGO. It integrates sustainable aquaculture (crab and fish farming) with mangrove restoration to provide livelihoods and reduce pressure on natural resources. Supported by UNDP, it primarily operates in the Indian Sundarbans of West Bengal."},{"id":53,"txt":"With reference to \"green crackers\" in India, consider the following — 1️⃣ They were developed by the Council of Scientific & Industrial Research - National Environmental Engineering Research Institute 2️⃣ Their manufacturing and sale licenses are granted by the Ministry of Environment, Forest and Climate Change","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":0,"exp":"Ex: CSIR-NEERI developed green crackers to reduce harmful emissions by replacing barium nitrate with less toxic oxidizers. Licenses for manufacturing and sale are granted by the Petroleum and Explosives Safety Organisation (PESO) under the DPIIT, not the Environment Ministry. The Supreme Court mandates that only certified green crackers can be used in high-pollution areas."},{"id":54,"txt":"With reference to the Pradhan Mantri Formalisation of Micro Food Processing Enterprises (PM-FME) Scheme, consider the following — 1️⃣ It provides assistance to entrepreneurs only to upgrade existing units 2️⃣ It provides support only to collective entities such as Farmer Producer Organisations and Self-Help Groups 3️⃣ It aims to promote one unique product per district that reflects the district's comparative advantage","ref":"","opts":["Only one","Only two","All the three","None"],"ci":0,"exp":"Ex: PM-FME supports both new unit setup and upgrading existing ones. It assists individual entrepreneurs with a 35% credit-linked subsidy (up to ₹10 lakh) as well as collective entities like FPOs and SHGs. The \"One District One Product\" (ODOP) approach is a key feature to promote local food identities. Only Statement III is correct."},{"id":55,"txt":"Consider the following statements — Statement I: As the Southwest Monsoon withdraws, Tamil Nadu, coastal Andhra Pradesh, and parts of Kerala experience rainfall. Statement II: During the post-monsoon period, there is formation of a high-pressure area over the Tibetan-Siberian region.","ref":"","opts":["Both Statement I and Statement II are correct and Statement II explains Statement I","Both Statement I and Statement II are correct but Statement II does not explain Statement I","Statement I is correct but Statement II is incorrect","Statement I is incorrect but Statement II is correct"],"ci":0,"exp":"Ex: As the Southwest Monsoon retreats, the ITCZ shifts south, causing northeasterly winds to pick up moisture over the Bay of Bengal and rain on India's southeast coast. This is driven by rapid cooling in the north, creating a high-pressure area over the Tibetan-Siberian region that reverses the pressure gradient. Statement II thus explains the wind shift mentioned in Statement I."},{"id":56,"txt":"With reference to India's relations with Afghanistan, consider the following — 1️⃣ India does not share a direct land border with Afghanistan 2️⃣ The Zaranj-Delaram Highway and the Salma Dam are infrastructure projects built by India in Afghanistan 3️⃣ India has created an alternative trade and transit route for Afghanistan through the Chabahar Port in Iran","ref":"","opts":["Only one","Only two","All the three","None"],"ci":1,"exp":"Ex: Official Indian maps show a 106 km border with Afghanistan through the Wakhan Corridor. India built the Zaranj-Delaram Highway (via the BRO) and the Salma Dam (Afghan-India Friendship Dam) to support reconstruction. India also developed Chabahar Port in Iran to provide Afghanistan a trade route bypassing Pakistan. Statements II and III are correct."},{"id":57,"txt":"Consider the following statements with regard to MERCOSUR — 1️⃣ It is a trading bloc in Latin America comprising Brazil, Argentina, Uruguay and Paraguay 2️⃣ India has signed a Free Trade Agreement with the MERCOSUR to eliminate tariffs on most goods and services","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":0,"exp":"Ex: MERCOSUR was formed in 1991 by Brazil, Argentina, Uruguay, and Paraguay to facilitate free movement of goods and services. India signed a Preferential Trade Agreement (PTA) in 2004, not a full Free Trade Agreement. The PTA grants reciprocal fixed tariff preferences with the long-term goal of creating a free trade area."},{"id":58,"txt":"Consider the following statements with regard to Leprosy in India — 1️⃣ It is one of the Neglected Tropical Diseases (NTDs) 2️⃣ India eliminated leprosy as a public health problem 3️⃣ It is treated through the Multi-Drug Therapy regimen","ref":"","opts":["Only one","Only two","All the three","None"],"ci":2,"exp":"Ex: Leprosy is caused by Mycobacterium leprae and is classified as an NTD by the WHO. India eliminated it as a \"public health problem\" (prevalence <1 per 10,000) in December 2005, though new cases still occur. It is treated using the Multi-Drug Therapy (MDT) regimen, which was introduced nationwide in 1983."},{"id":59,"txt":"Consider the following statements about the Food and Agriculture Organisation — 1️⃣ It is a specialised agency of the United Nations that leads international efforts to defeat hunger 2️⃣ It provides food aid to improve the nutrition of vulnerable people in times of crisis 3️⃣ It publishes the State of Food Security and Nutrition in the World report","ref":"","opts":["I and II only","II and III only","I and III only","I, II and III"],"ci":2,"exp":"Ex: FAO is the lead UN agency for technical expertise in food security and agriculture. Food aid in crises is the mandate of the World Food Programme (WFP), not the FAO. FAO’s flagship publications include \"The State of Food Security and Nutrition in the World\" and \"The State of Food and Agriculture\". Statement II is incorrect."},{"id":60,"txt":"Which of the following Indian States or Union Territories have more than one capital? — 1️⃣ Jammu and Kashmir 2️⃣ Himachal Pradesh 3️⃣ Maharashtra 4️⃣ Arunachal Pradesh","ref":"","opts":["I and II only","I, II and III only","II and IV only","I, III and IV only"],"ci":1,"exp":"Ex: J&K has Srinagar (summer) and Jammu (winter), a practice revived in 2025. Himachal Pradesh uses Shimla (summer) and Dharamshala (winter) due to extreme cold. Maharashtra’s official capital is Mumbai, but Nagpur is the \"second capital\" hosting the winter assembly session. Arunachal Pradesh has only one capital, Itanagar."},{"id":61,"txt":"With reference to the species of Kurunji, consider the following — 1️⃣ It is known as the flower which makes the Neelgiri hills blue 2️⃣ It is considered an indicator of climate change 3️⃣ It grows primarily in the Eravikulam National Park 4️⃣ It is included under Schedule V of the Wildlife (Protection) Act, 1972","ref":"","opts":["I, II and III only","II and IV only","I and IV only","I, II, III and IV"],"ci":0,"exp":"Ex: Kurinji blooms once in 12 years and gives the Nilgiris their blue color. Its blooming cycle is sensitive to temperature and rain, making it a climate change indicator. It grows primarily in Eravikulam National Park and Kurinjimala Sanctuary. It is protected under Schedule III (not Schedule V) of the Wildlife (Protection) Act, 1972."},{"id":62,"txt":"Consider the following statements with reference to the Central Bank Digital Currency (CBDC) — 1️⃣ It is the legal tender issued in a digital form 2️⃣ It is not permitted in cross-border transactions 3️⃣ It is backed by gold reserves","ref":"","opts":["II and III only","I only","I and II only","III only"],"ci":1,"exp":"Ex: CBDC is a digital form of fiat currency and legal tender issued by a central bank. It enables both domestic and cross-border transactions without requiring a third-party bank. Unlike stablecoins backed by assets, CBDC is the sovereign currency itself and is a direct liability of the central bank, not necessarily backed by gold."},{"id":63,"txt":"With reference to the Poverty Line in India, which of the following statements are correct? — 1️⃣ The Rangarajan Committee fixed the poverty line based on monthly per capita expenditure 2️⃣ Odisha and Bihar have shown the greatest reduction in poverty among 20 major states over the past decade 3️⃣ The Household Consumption Expenditure Survey (HCES) provides the key data used for calculating and updating poverty lines in India","ref":"","opts":["I and III only","I and III only","II only","I, II, and III"],"ci":3,"exp":"Ex: The Rangarajan Committee (2014) set monthly per capita expenditure lines of ₹972 (rural) and ₹1,407 (urban). A 2025 RBI study found Odisha and Bihar made the biggest gains in poverty reduction. The NSSO's HCES is the primary data source for estimating consumption and poverty across India."},{"id":64,"txt":"A behavioural condition is being increasingly observed among children raised in small, urban nuclear families. The child is overindulged by parents and grandparents, given everything they demand without limits or responsibility. This excessive pampering inhibits emotional growth, makes them unable to handle failure or denial, and often leads to irritability, overconfidence, and difficulty adjusting socially as they grow older. Which of the following syndromes is described here?","ref":"","opts":["Peter Pan Syndrome","Helicopter Parenting Syndrome","Six-Pocket Syndrome","Affluenza Syndrome"],"ci":2,"exp":"Ex: The Six-Pocket Syndrome involves overpampering by six adults (two parents, four grandparents). Originating in China’s one-child era, it leads to emotional immaturity, entitlement, and poor coping mechanisms. Consequences include social maladaptation and dependence. Correction involves setting boundaries and linking rewards to responsibilities."},{"id":65,"txt":"Which of the following statements are correct? — 1️⃣ Electric vehicles (EV) are exempted from paying the road tax 2️⃣ The Government of India has set a target of 50% EV penetration by 2030 3️⃣ PM-E-DRIVE offers targeted incentives to strengthen domestic manufacturing capabilities","ref":"","opts":["I only","II only","Both I and III","Neither I nor II"],"ci":2,"exp":"Ex: EV benefits in India include road tax exemptions and high subsidies covering nearly 46% of some model prices. The PM-E-DRIVE scheme (2024) provides targeted incentives for e-buses and e-trucks to boost domestic manufacturing. The government target is 30% EV penetration by 2030, not 50%."},{"id":66,"txt":"Which key outcome document was adopted at the first ARISE Cities Forum 2025 in New Delhi to advance multilevel urban climate action across the Global South?","ref":"","opts":["Delhi Climate Compact","ARISE Urban Resilience Charter","Delhi Declaration on Local Action for Global Climate Goals","Delhi Urban Sustainability Framework"],"ci":2,"exp":"Ex: The ARISE Cities Forum 2025 adopted the Delhi Declaration on Local Action for Global Climate Goals. Co-hosted by ICLEI South Asia and NIUA, it united delegates from 60 cities. The declaration aims to advance urban resilience, equity, and climate finance in Global South cities ahead of COP30."},{"id":67,"txt":"Which of the following statements is/are correct about the Blackbuck? — 1️⃣ It was reintroduced in the Barnawapara Wildlife Sanctuary in Chhattisgarh after being locally extinct for nearly 50 years 2️⃣ It gets the highest level of legal protection under the Wildlife (Protection) Act, 1972","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":2,"exp":"Ex: Blackbucks were declared locally extinct in Chhattisgarh in 2017 but were reintroduced to Barnawapara Wildlife Sanctuary starting in 2021. They are protected under Schedule I of the Wildlife (Protection) Act, 1972. Although locally threatened, their global IUCN status is Least Concern."},{"id":68,"txt":"Which one of the following bodies/treaties is primarily responsible for the management and oversight of the Species Survival Commission (SSC)?","ref":"","opts":["Convention on International Trade in Endangered Species of Wild Fauna and Flora","Wildlife Conservation Society","International Union for Conservation of Nature","Convention on Biological Diversity"],"ci":2,"exp":"Ex: The SSC is one of seven expert commissions of the IUCN. It is a network of 10,500 experts providing biodiversity conservation data. This information is the primary feed for the IUCN Red List. In 2025, Vivek Menon became the first Asian to chair the commission."},{"id":69,"txt":"With reference to the Global Multidimensional Poverty Index (MPI), 2025, consider the following — 1️⃣ It, for the first time, mapped poor populations' exposure to heat, drought, floods, and air pollution 2️⃣ South Asia has the highest number of multidimensionally poor people exposed to one or more climate hazards","ref":"","opts":["I and II only","I and III only","II and III only","I, II and III"],"ci":0,"exp":"Ex: The 2025 MPI incorporated mapping of exposure to four climate risks (heat, drought, floods, air pollution) for the first time. South Asia is identified as the most climate-exposed region, with 99.1% of its poor population facing at least one hazard. Globally, 1.1 billion people are multidimensionally poor."},{"id":70,"txt":"Consider the following statements about the Prime Minister's Schools for Rising India (PM-SHRI) scheme — 1️⃣ These schools will be showcased as exemplary schools for the implementation of the National Education Policy, 2020 2️⃣ The school infrastructure during non-teaching hours would be used as Common Service Centers 3️⃣ A maximum of two schools will be selected from every block or urban local body","ref":"","opts":["I and II only","II and III only","I and III only","I, II and III"],"ci":2,"exp":"Ex: PM-SHRI develops 14,500 schools as model NEP 2020 institutions. During non-teaching hours, infrastructure is used as a \"Samajik Chetna Kendra\" for community activities, not Common Service Centers. A maximum of two schools (one elementary, one secondary) are selected per block or urban body."},{"id":71,"txt":"With reference to municipal finances in India, consider the following — 1️⃣ The Constitution of India empowers the Parliament to specify by law matters relating to imposition of taxes by municipalities 2️⃣ After the introduction of the Goods and Services Tax (GST), municipalities lost their taxation power on Entry Tax 3️⃣ The audit of the accounts of the municipalities is done as per the provisions of the State law 4️⃣ Municipal bonds cannot be pledged as a security for repo and reverse repo transactions","ref":"","opts":["I, III and IV only","II and III only","I, II and III only","II and IV only"],"ci":1,"exp":"Ex: State Legislatures (not Parliament) specify tax matters for municipalities under Article 243X. GST subsumed Entry Tax (Octroi), a major municipal revenue source. Audits are done per State law according to Article 243Z. In 2025, the Finance Ministry permitted using municipal bonds as security for repo transactions. Statements II and III are correct."},{"id":72,"txt":"With reference to the United Nations (UN), which of the statements given below are correct? — 1️⃣ It was created under the Atlantic Charter which aimed to provide collective security 2️⃣ Its principal judicial organ is the International Court of Justice 3️⃣ The \"UN75 Declaration\" sets out 12 commitments to guide global cooperation over the coming decade","ref":"","opts":["I and II only","II and III only","I and III only","I, II and III"],"ci":3,"exp":"Ex: UN principles were first laid out in the 1941 Atlantic Charter. The ICJ is the UN's principal judicial organ, established in June 1945. In 2020, the General Assembly adopted the \"UN75 Declaration,\" outlining 12 commitments like digital cooperation and planetary protection for the next decade. The UN turned 80 in 2025."},{"id":73,"txt":"The term \"Time Rondeau Crystal\", frequently seen in news, refers to:","ref":"","opts":["A specialized solid-state device used to synchronize atomic clocks across vast geographical distances for satellite navigation systems","A type of photonic crystal designed to slow down light for use in advanced optical communication and quantum computing chips","An ultra-hard composite crystal developed using nanotechnology to coat aerospace components","A state of matter whose component particles exhibit a robust, repeating pattern of motion in time"],"ci":3,"exp":"Ex: A Time Rondeau Crystal (TRC) is a new phase of matter that repeats in time rather than space. It features a mix of order and randomness, maintaining a repeating pattern over long times while showing irregular motion between those moments. Researchers created one using carbon-13 nuclei in diamond."},{"id":74,"txt":"Which one of the following best describes the term Atomic Stencils?","ref":"","opts":["A quantum computing architecture used for parallel processing at the atomic scale","A technique to precisely apply polymer patches onto microscopic gold nanoparticles","A technique used to create an ultra-fine template for the fabrication of complex integrated circuits on a silicon wafer","A position of atoms in an ordered crystal lattice to predict a material's electronic properties"],"ci":1,"exp":"Ex: Atomic stencilling uses a layer of single atoms (like iodide) as a nanoscale mask on a nanoparticle’s surface. This allows scientists to precisely \"paint\" polymer patches onto gold nanoparticles. The process enables self-assembly of nanoparticles into large 3D crystals called superlattices."},{"id":75,"txt":"With reference to the Global Forest Resources Assessment (GFRA), 2025, consider the following — 1️⃣ The total global forest area constitutes roughly 32 per cent of the world's land area 2️⃣ India's total forest area accounts for 2 per cent of the global forest area 3️⃣ Forests globally continue to act as a net carbon sink, absorbing more carbon dioxide than they emit","ref":"","opts":["I only","I and II only","II and III only","I, II and III"],"ci":3,"exp":"Ex: Global forest area is 4.14 billion hectares, covering 32% of total land area. India’s forest area (72 million hectares) represents 2% of the global total, ranking India 9th globally. Despite deforestation, global forests act as a net sink, sequestering roughly 7.8 billion tonnes of CO2 annually."},{"id":76,"txt":"The 'State of Finance for Forests 2025' report is released by which one of the following organizations?","ref":"","opts":["United Nations Forum on Forests","Forest Stewardship Council","United Nations Environment Programme","Food and Agriculture Organization"],"ci":2,"exp":"Ex: The UNEP releases the \"State of Finance for Forests\" report. The 2025 report highlights that forest investment must triple by 2030 to address climate and biodiversity loss. It identifies an annual funding gap of US$216 billion. The FAO releases separate reports like SOFO and the GFRA."},{"id":77,"txt":"With reference to the Synchronous All India Elephant Estimation (SAIEE) 2021-25 survey, consider the following — 1️⃣ Elephants have been counted every five years since the launch of Project Elephant in 1992 2️⃣ The Eastern Ghats is the largest landscape for India's elephant population 3️⃣ SAIEE was conducted by the Forest Research Institute","ref":"","opts":["II and III only","I only","III only","I, II and III"],"ci":1,"exp":"Ex: Elephant censuses have been conducted every five years since 1992. The Western Ghats (not Eastern) is the largest landscape, hosting over 53% of the population. The survey was conducted by the Environment Ministry, Project Elephant, and the Wildlife Institute of India, not the FRI. Only Statement I is correct."},{"id":78,"txt":"What is the '#23for23 Initiative', recently seen in the news?","ref":"","opts":["It encourages people to undertake physical activity for 23 minutes to raise awareness about snow leopard conservation.","It is a financial incentive scheme offering 23,000 to rural households for wildlife protection.","It mandates planting 23 trees per household to mark International Snow Leopard Day.","It requires companies to sponsor 23 community forest patrol teams annually for snow leopard habitats."],"ci":0,"exp":"Ex: Launched by the MoEFCC on International Snow Leopard Day (23 Oct), this campaign encourages 23 minutes of physical activity to raise awareness for snow leopard conservation. The number serves as a mnemonic for the date. India’s first national snow leopard census estimated 718 individuals, with 477 found in Ladakh."},{"id":79,"txt":"Consider the following statements about the National Biodiversity Authority — 1️⃣ It is a statutory body established under the Wildlife (Protection) Act, 1972 2️⃣ It grants prior approval for all Intellectual Property Rights that are based on Indian biological resources 3️⃣ It assesses and notifies the areas of biodiversity importance as Biodiversity Heritage Sites","ref":"","opts":["I only","II and III only","I and III only","I, II and III"],"ci":2,"exp":"Ex: The NBA is a statutory body established in 2003 under the Biological Diversity Act 2002, not the Wildlife Act. It must approve IPR applications based on Indian biological resources to prevent biopiracy. Biodiversity Heritage Sites are notified by State Governments, not the NBA. Only Statement II is correct, so I and III are not correct."},{"id":80,"txt":"With reference to cloud seeding, consider the following — Statement I: Cloud seeding efforts during the post-monsoon season are unlikely to yield significant rainfall. Statement II: During the post-monsoon season, atmospheric conditions largely favour dry weather conditions and depressions are largely absent.","ref":"","opts":["Both Statement I and Statement II are correct and Statement II explains Statement I","Both Statement I and Statement II are correct but Statement II does not explain Statement I","Statement I is correct but Statement II is incorrect","Statement I is incorrect but Statement II is correct"],"ci":0,"exp":"Ex: Post-monsoon cloud seeding (Oct-Dec) is unlikely to succeed because moisture-laden monsoon clouds and low-pressure systems are absent. Atmospheric conditions during this time favor dry weather unless triggered by western disturbances. Statement II correctly identifies the meteorological conditions that make seeding in Statement I unfeasible."},{"id":81,"txt":"With reference to Geothermal Energy, consider the following — 1️⃣ High-enthalpy resources associated with volcanic regions, geysers and hot springs are used for electricity generation 2️⃣ Unreliable baseload supply and suppressed grid stability are the main disadvantages of geothermal power 3️⃣ The Geological Survey of India has identified Andaman Nicobar Islands and Son-Narmada-Tapi as geothermal provinces","ref":"","opts":["I and II only","II and III only","I only","I and III only"],"ci":3,"exp":"Ex: High-enthalpy volcanic resources generate electricity, while low-enthalpy resources serve direct uses like heating. Geothermal power provides 24/7 reliable baseload supply and enhances grid stability, which are advantages, not disadvantages. GSI identified 10 provinces including SONATA and the Andaman Nicobar Islands. Statements I and III are correct."},{"id":82,"txt":"Which one of the following is not correct with regard to the Goods and Services Tax regime?","ref":"","opts":["Centre and States agreed to have concurrent power to tax goods and services.","The GST revenue has consistently increased since its implementation in 2017.","The Constitution confers on both the Union and State, the concurrent jurisdiction to levy tax on supply of goods and services.","GST Law Committee proposes changes in the GST laws taking into account various feedbacks."],"ci":1,"exp":"Ex: GST revenue has seen fluctuations, such as a notable dip in the 2020-21 fiscal year (averaging ₹94,734 crore) compared to 2019-20. The 101st Amendment and Article 246A preserved federalism by conferring concurrent taxing powers to both the Union and States. The GST Law Committee proposes reforms like rate rationalization."},{"id":83,"txt":"Which of the following statements is/are correct? — 1️⃣ Blockchain functions like a ledger of records or transactions, resistant to tampering and accessible across a network of computers 2️⃣ Vishvasya Blockchain Stack provides the technical foundation for building and deploying blockchain-based applications for governance 3️⃣ Praamaanik is a solution that leverages blockchain technology to verify the authenticity and source of mobile applications","ref":"","opts":["I, II and III","I and II only","III only","I and III only"],"ci":0,"exp":"Ex: Blockchain is a secure, immutable ledger accessible across a network. The National Blockchain Framework uses the Vishvasya Blockchain Stack as its indigenous platform for building governance applications. Praamaanik uses blockchain records to verify the legitimacy and source of mobile apps to protect against fraudulent software."},{"id":84,"txt":"Recently, the Government of India released a ₹200 commemorative coin to mark which one of the following historic events?","ref":"","opts":["200 Years of Arya Samaj Movement","200 Years of Mysore's First War of Independence","200 Years of Vaikom Satyagraha","200 Years of Rani Chennamma's Victory at Kittur"],"ci":3,"exp":"Ex: In October 2025, the Ministry of Culture commemorated 200 years of Rani Chennamma’s victory at Kittur (1824). To honor her legacy as one of India's earliest female freedom fighters, a ₹200 commemorative coin was released. Her resistance predated the 1857 Revolt and inspired future generations."},{"id":85,"txt":"With reference to protected sites in India, consider the following pairs — 1️⃣ Khangchendzonga National Park: Arunachal Pradesh 2️⃣ Changthang Wildlife Sanctuaries: Ladakh 3️⃣ Nangal Wildlife Sanctuary: Orissa 4️⃣ Bondla Wildlife Sanctuary: Goa","ref":"","opts":["Only one","Only two","Only three","All the four"],"ci":1,"exp":"Ex: Khangchendzonga National Park is in Sikkim, not Arunachal Pradesh. Changthang is in Ladakh. Nangal Wildlife Sanctuary is in Punjab, not Orissa. Bondla is in Goa. Only pairs II and IV are correctly matched."},{"id":86,"txt":"Consider the following statements about the Rehabilitation Council of India — 1️⃣ It is a statutory body established under the Ministry of Health and Family Welfare 2️⃣ It regulates access to the Ayushman Bharat Digital Mission (ABDM) platform by Persons with Disabilities (PWD)","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":3,"exp":"Ex: The RCI is a statutory body under the Ministry of Social Justice and Empowerment, not Health. Its mandate is to regulate services for PWDs, standardize syllabi, and maintain the Central Rehabilitation Register. It does not specifically regulate ABDM platform access. Statement II is incorrect."},{"id":87,"txt":"With reference to India's 6G Vision 2030, consider the following — 1️⃣ 6G aims to send and receive information in just 5-10 millisecond 2️⃣ The Bharat 6G Alliance (B6GA) has been formed to foster indigenous research 3️⃣ It aims to create a sector contributing nearly USD 1.2 trillion to the national GDP by 2035","ref":"","opts":["Only one","Only two","All the three","None"],"ci":1,"exp":"Ex: 6G aims for 1 microsecond latency, which is 1,000 times faster than 5G; 5-10 milliseconds is 4G speed. The B6GA fosters indigenous research and international collaboration. The 6G roadmap envisions the sector contributing $1.2 trillion to GDP by 2035. Statements II and III are correct."},{"id":88,"txt":"Consider the following statements with regard to Graded Response Action Plan (GRAP) in Delhi NCR — 1️⃣ It is operationalized only when air quality is classified as 'Severe' or 'Severe Plus' as per the Air Quality Index 2️⃣ Measures imposed under the previous categories continue even when the subsequent category measures are activated 3️⃣ It is implemented by the Ministry of Environment, Forest and Climate Change","ref":"","opts":["I only","I and II","II only","II and III"],"ci":2,"exp":"Ex: GRAP Stage 1 activates when AQI is 'poor' (201–300). Subsequent stages activate before reaching 'very poor,' 'severe,' and 'severe plus'. Measures from lower stages continue when higher stages are triggered. It is implemented by the Commission for Air Quality Management (CAQM), not the Ministry directly. Only Statement II is correct."},{"id":89,"txt":"The term 'Willow', recently in the news, refers to:","ref":"","opts":["India's indigenous semiconductor chip","Google's quantum processor","NASA's lunar terrain navigation module","IBM's neuromorphic computing project"],"ci":1,"exp":"Ex: Willow is Google Quantum AI's next-generation processor. In 2025, it demonstrated quantum advantage by outperforming supercomputers on complex problems. It successfully executed a Decoded Quantum Interferometry algorithm for solving optimization problems and studied information scrambling."},{"id":90,"txt":"With reference to India's maritime strength, consider the following — 1️⃣ India currently handles about 10% of global seaborne trade 2️⃣ About 50% of India's maritime trade cargo is carried on India-owned vessels 3️⃣ The Maritime Amrit Kaal Vision 2047 aims to expand India's total port-handling capacity to 10,000 MMTA","ref":"","opts":["I, II and III","III only","I and III only","II only"],"ci":2,"exp":"Ex: India currently handles 10% of global seaborne trade. Only about 20% (not 50%) of trade cargo is carried on India-flagged or owned vessels. The MIV 2047 aims for a fourfold expansion of port capacity to 10,000 MMTPA. Statements I and III are correct."},{"id":91,"txt":"Consider the following statements about the Rashtriya Vigyan Puraskar 2025 — 1️⃣ It is India's highest recognition for exemplary and inspirational contributions in the fields of science, technology, and innovation 2️⃣ The Vigyan Yuva - Shanti Swarup Bhatnagar Award acknowledges young scientists below 45 years 3️⃣ These cannot be given posthumously","ref":"","opts":["I and II only","III only","I and III only","I, II and III"],"ci":0,"exp":"Ex: The Rashtriya Vigyan Puraskar is the nation's highest scientific honor. The Vigyan Yuva-SSB award targets scientists up to age 45. Awards can be given posthumously; for example, Prof. Jayant Vishnu Narlikar received the 2025 Vigyan Ratna posthumously. Statement III is incorrect."},{"id":92,"txt":"There are deep learning models trained on immense amounts of data, making them capable of understanding and generating natural language and other types of content to perform a wide range of tasks. They work as giant statistical prediction machines that repeatedly predict the next word in a sequence. They learn patterns in their text and generate language that follows those patterns. When given agentic capabilities, they can perform, with varying degrees of autonomy, various tasks that would otherwise be performed by humans. They are the culmination of decades of progress in Natural Language Processing (NLP) and machine learning research, and their development is largely responsible for the explosion of artificial intelligence advancements across the late 2010s and 2020s. In the context of emerging technologies, which of the following terms best applies to the above scenario?","ref":"","opts":["Programming Languages","Conversational AI","Large Language Models","Natural Language Generation"],"ci":2,"exp":"Ex: Large Language Models (LLMs) are deep learning models trained on massive data for varied tasks. They use transformer architecture to predict the next word in a sequence based on learned patterns. LLMs can adapt to summarize text, debug code, or act as agents. Examples include Gemini, ChatGPT, and Claude."},{"id":93,"txt":"Which of the following statements are correct about the India-ASEAN partnership? — 1️⃣ India has accorded 'Special and Privileged Strategic Partnership' to its relation with ASEAN 2️⃣ India is part of the East Asian Summit, an ASEAN-led framework 3️⃣ ASEAN remained the second largest trading partner of India in 2024-25 4️⃣ The year 2026 has been designated as the ASEAN-India Year of Maritime Cooperation","ref":"","opts":["I and III only","II and IV only","I, II and III only","II, III and IV only"],"ci":1,"exp":"Ex: India's relation with ASEAN is a 'Comprehensive Strategic Partnership'; 'Special and Privileged' is the term used for Russia. India participates in the East Asian Summit. ASEAN was the 2nd largest partner in 2023-24, but 2024-25 data shows the US first and China second. 2026 is designated the Year of Maritime Cooperation."},{"id":94,"txt":"Consider the following — 1️⃣ Money Laundering 2️⃣ Sale or purchase of passwords 3️⃣ Interception of non-public data transmissions 4️⃣ Online distribution of child pornography","ref":"","opts":["Only one","Only two","Only three","All the four"],"ci":3,"exp":"Ex: The UN Convention against Cybercrime covers laundering proceeds from cybercrimes. It criminalizes the sale or purchase of login details for hacking. It prohibits the interception of non-public data transmissions. It specifically strengthens tools to fight online child sexual abuse material (CSAM). All four are covered."},{"id":95,"txt":"With reference to the 'Global Virus Network (GVN)', consider the following — 1️⃣ It is a network of countries most affected by the Corona virus pandemic to advance knowledge about viruses 2️⃣ It has launched the Global Guardians initiative to train young people in pandemic preparedness","ref":"","opts":["I only","II only","Both I and II","Neither I nor II"],"ci":1,"exp":"Ex: GVN is a global coalition of virologists, not just affected countries, working on diagnostics and vaccines. \"Global Guardians: Youth for Pandemic Preparedness\" is their initiative to train students in the science of pandemics and vaccines. Multiple Indian institutes, like the Institute of Advanced Virology, are members."},{"id":96,"txt":"In the context of defence, the METEOR is:","ref":"","opts":["a beyond-visual-range air-to-air missile","an anti-drone protection system","an anti-tank guided missile","a short-range cruise missile"],"ci":0,"exp":"Ex: Meteor is a next-generation BVRAAM developed by the European consortium MBDA. It uses ramjet propulsion to maintain high speeds and has a range exceeding 150 km. Its \"no-escape zone\" is significantly larger than other missiles, making evasion nearly impossible once engaged."},{"id":97,"txt":"The term Axial Seamount, recently seen in the news, refers to:","ref":"","opts":["the highest volcanic peak in the Andes Mountains","a submarine volcano located in the Pacific Ocean","a volcanic island in the Indian Ocean near Indonesia","a seamount chain in the Arctic Ocean"],"ci":1,"exp":"Ex: Axial Seamount is an active submarine volcano on the Juan de Fuca Ridge in the northeast Pacific, 480 km off the US coast. It sits on a hotspot where magma rises through tectonic boundaries. Real-time monitoring in 2025 revealed signs of renewed volcanic activity."},{"id":98,"txt":"With reference to the Bordetella holmesii, recently seen the news, consider the following statements:","ref":"","opts":["It is a lesser known bacteria that can cause whooping-type symptoms and chest infections.","It is a newly discovered bacteria that is associated with tuberculosis.","It is responsible for leakage in the gut and weakening the immune system.","None of the above"],"ci":0,"exp":"Ex: A PGIMER study found that B. holmesii is responsible for a substantial fraction of pertussis-like (whooping cough) illnesses in North Indian children. It mimics the clinical picture of B. pertussis, potentially leading to misdiagnosis. Its rise suggests that current diagnostic and control protocols may need revision."},{"id":99,"txt":"\"MeghRaj 2.0\", recently in the news, refers to:","ref":"","opts":["India's upgraded cloud computing initiative","a new Indian Navy communication satellite system","an artificial intelligence platform for agriculture forecasting","a weather prediction model developed by the IMD"],"ci":0,"exp":"Ex: MeghRaj 2.0 is an upgraded version of India's GI Cloud initiative launched by MeitY. It provides a secure cloud environment for hosting government applications and data. It integrates AI, data analytics, and cybersecurity tools to improve digital service delivery across ministries."}],"m":null,"tt":6000,"nm":0.66};
+let explanationMode='plain';
+function setExplanationMode(mode){explanationMode=mode==='notes'?'notes':'plain';const sel=document.getElementById('explanationMode');if(sel&&sel.value!==explanationMode)sel.value=explanationMode;if(typeof st!=='undefined'&&st&&typeof st.cq==='number'&&document.getElementById('qs'))rq(st.cq);}
+function noteEscape(value){return String(value==null?'':value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;');}
+function buildStudyNotes(raw){
+ const text=String(raw||'').replace(/^\s*Ex\s*:\s*/i,'').trim();
+ if(!text)return '<div class="notes-panel"><div class="notes-empty">No explanation was provided for this question.</div></div>';
+ const sentences=text.split(/\n+|(?<=[.!?])\s+(?=[A-Z0-9])/).map(x=>x.trim()).filter(Boolean);
+ const defs=sentences.filter(x=>/\b(is defined as|means that|refers to|is known as|can be defined as|denotes)\b/i.test(x));
+ const years=[];const yearRx=/\b(?:1[6-9]\d{2}|20[0-3]\d)\b/g;let match;while((match=yearRx.exec(text))!==null){if(!years.some(y=>y.year===match[0])){const start=Math.max(0,match.index-65),end=Math.min(text.length,match.index+105);years.push({year:match[0],detail:text.slice(start,end).trim()});}}
+ const termSet=[];const termRx=/\b(?:Article\s+\d+[A-Za-z]?|[A-Z]{2,}(?:\s+[A-Z]{2,}){0,2})\b/g;while((match=termRx.exec(text))!==null){const term=match[0].trim();if(term.length>2&&!/^(THE|AND|FOR|NOT|BUT|EX|INDIA)$/i.test(term)&&!termSet.includes(term))termSet.push(term);}
+ const esc=noteEscape;let html='<div class="notes-panel"><div class="notes-banner"><span class="notes-banner-icon">📚</span><div><div class="notes-banner-title">Structured Study Notes</div><div class="notes-banner-sub">Explanation organised for quick revision</div></div></div>';
+ if(defs.length)html+='<section class="notes-section definition"><h4>📖 Definition / Core Idea</h4>'+defs.map(x=>'<p>'+esc(x)+'</p>').join('')+'</section>';
+ const key=sentences.filter(x=>defs.indexOf(x)===-1&&!/^(Hence|Therefore|Thus|In conclusion)\b/i.test(x));
+ if(key.length)html+='<section class="notes-section points"><h4>📌 Key Points</h4><ul>'+key.slice(0,12).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></section>';
+ if(years.length)html+='<section class="notes-section timeline"><h4>🗓️ Important Years / Dates</h4><ul>'+years.slice(0,8).map(y=>'<li><b>'+esc(y.year)+'</b> — '+esc(y.detail)+'</li>').join('')+'</ul></section>';
+ if(termSet.length)html+='<section class="notes-section terms"><h4>🔑 Key Terms</h4><p>'+termSet.slice(0,10).map(esc).join(' · ')+'</p></section>';
+ const revision=sentences.slice(0,5);if(revision.length)html+='<section class="notes-section revision"><h4>☑️ Quick Revision Checklist</h4><ul>'+revision.map(x=>'<li>☐ '+esc(x)+'</li>').join('')+'</ul></section>';
+ html+='<details class="notes-section"><summary style="cursor:pointer;font-size:11px;font-weight:700;color:#475569">View original explanation</summary><p style="margin-top:8px">'+esc(text)+'</p></details></div>';return html;
+}
+st={cq:0,a:Array(qd.q.length).fill(null),mk:Array(qd.q.length).fill(false),tr:qd.tt,ti:null,sb:false,rv:false,th:'light'};
+
+const VoiceEngine = {
+    enabledQ: false,
+    enabledExp: false,
+    selectedVoice: null,
+    init() {
+        const qCheck = document.getElementById('tts-read-q-p');
+        const expCheck = document.getElementById('tts-read-exp-p');
+        if (qCheck) {
+            this.enabledQ = localStorage.getItem('tts_read_q') === 'true';
+            qCheck.checked = this.enabledQ;
+            qCheck.addEventListener('change', (e) => {
+                this.enabledQ = e.target.checked;
+                localStorage.setItem('tts_read_q', this.enabledQ);
+                if (this.enabledQ) this.speak("Voice enabled");
+                else window.speechSynthesis.cancel();
+            });
+        }
+        if (expCheck) {
+            this.enabledExp = localStorage.getItem('tts_read_exp') === 'true';
+            expCheck.checked = this.enabledExp;
+            expCheck.addEventListener('change', (e) => {
+                this.enabledExp = e.target.checked;
+                localStorage.setItem('tts_read_exp', this.enabledExp);
+                if (this.enabledExp) this.speak("Explanation enabled");
+                else window.speechSynthesis.cancel();
+            });
+        }
+        this.selectVoice();
+        if (typeof window !== 'undefined' && window.speechSynthesis) {
+            window.speechSynthesis.onvoiceschanged = () => this.selectVoice();
+        }
+    },
+    selectVoice() {
+        if (typeof window === 'undefined' || !window.speechSynthesis) return;
+        const voices = window.speechSynthesis.getVoices();
+        let hiVoice = voices.find(v => v.lang.startsWith('hi') && (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('veena') || v.name.toLowerCase().includes('google')));
+        if (!hiVoice) hiVoice = voices.find(v => v.lang.startsWith('hi'));
+        let enVoice = voices.find(v => v.lang.startsWith('en') && (v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('hazel') || v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('google') || v.name.toLowerCase().includes('samantha')));
+        if (!enVoice) enVoice = voices.find(v => v.lang.startsWith('en'));
+        this.selectedVoice = hiVoice || enVoice || voices[0];
+    },
+    speak(text) {
+        if (typeof window === 'undefined' || !window.speechSynthesis) return;
+        window.speechSynthesis.cancel();
+        if (!text) return;
+        let cleanText = text.replace(/<[^>]*>/g, "").trim();
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        if (this.selectedVoice) utterance.voice = this.selectedVoice;
+        window.speechSynthesis.speak(utterance);
+    },
+    speakQuestion(qObj) {
+        if (!this.enabledQ) return;
+        let str = qObj.txt + ". ";
+        if (qObj.opts) {
+            qObj.opts.forEach((o, i) => {
+                str += "Option " + String.fromCharCode(65 + i) + ": " + o + ". ";
+            });
+        }
+        this.speak(str);
+    },
+    speakExplanation(exp) {
+        if (!this.enabledExp) return;
+        this.speak("Explanation: " + exp);
+    }
+};
+
+const Lifelines = {
+    used5050: false,
+    usedPoll: false,
+    usedDouble: false,
+    doubleDipActive: false,
+    init() {
+        this.used5050 = false;
+        this.usedPoll = false;
+        this.usedDouble = false;
+        this.doubleDipActive = false;
+        const btn1 = document.getElementById('ll-5050');
+        const btn2 = document.getElementById('ll-poll');
+        const btn3 = document.getElementById('ll-double');
+        if (btn1) btn1.disabled = false;
+        if (btn2) btn2.disabled = false;
+        if (btn3) btn3.disabled = false;
+    }
+};
+
+function useLifeline(type) {
+    const q = qd.q[st.cq];
+    if (type === '5050') {
+        if (Lifelines.used5050) return;
+        Lifelines.used5050 = true;
+        document.getElementById('ll-5050').disabled = true;
+        
+        const incorrect = [];
+        q.opts.forEach((_, i) => {
+            if (i !== q.ci) incorrect.push(i);
+        });
+        
+        const toHide = [];
+        while (toHide.length < 2 && incorrect.length > 0) {
+            toHide.push(incorrect.splice(Math.floor(Math.random() * incorrect.length), 1)[0]);
+        }
+        
+        const btns = document.querySelectorAll('.option-btn');
+        toHide.forEach(idx => {
+            if (btns[idx]) {
+                btns[idx].style.opacity = '0';
+                btns[idx].style.pointerEvents = 'none';
+            }
+        });
+    } 
+    else if (type === 'poll') {
+        if (Lifelines.usedPoll) return;
+        Lifelines.usedPoll = true;
+        document.getElementById('ll-poll').disabled = true;
+        
+        let correctPct = Math.floor(Math.random() * 25) + 50;
+        let remaining = 100 - correctPct;
+        
+        const optPcts = [0, 0, 0, 0];
+        optPcts[q.ci] = correctPct;
+        
+        const other = [0, 1, 2, 3].filter(i => i !== q.ci);
+        const p1 = Math.floor(Math.random() * (remaining - 5));
+        remaining -= p1;
+        const p2 = Math.floor(Math.random() * remaining);
+        const p3 = remaining - p2;
+        optPcts[other[0]] = p1;
+        optPcts[other[1]] = p2;
+        optPcts[other[2]] = p3;
+        
+        const container = document.getElementById('pollBarsContainer');
+        container.innerHTML = '';
+        
+        q.opts.forEach((opt, idx) => {
+            const pct = optPcts[idx];
+            const label = String.fromCharCode(65 + idx);
+            const barWrap = document.createElement('div');
+            barWrap.style.marginBottom = '10px';
+            barWrap.innerHTML = `
+                <div style="display:flex; justify-content:space-between; font-size:12px; font-weight:600; margin-bottom:4px;">
+                    <span>Option ${label}: ${opt.slice(0, 25)}</span>
+                    <span>${pct}%</span>
+                </div>
+                <div style="height:10px; background:rgba(0,0,0,0.05); border-radius:5px; overflow:hidden;">
+                    <div class="poll-fill-${idx}" style="height:100%; border-radius:5px; width:0%; background:${idx === q.ci ? 'var(--success)' : 'var(--primary)'}; transition: width 1s ease;"></div>
+                </div>
+            `;
+            container.appendChild(barWrap);
+            setTimeout(() => {
+                const fillEl = container.querySelector('.poll-fill-' + idx);
+                if (fillEl) fillEl.style.width = pct + '%';
+            }, 100);
+        });
+        
+        document.getElementById('pollModal').style.display = 'flex';
+    } 
+    else if (type === 'double') {
+        if (Lifelines.usedDouble) return;
+        Lifelines.usedDouble = true;
+        Lifelines.doubleDipActive = true;
+        document.getElementById('ll-double').disabled = true;
+        alert("Double Dip Lifeline Active! You can now guess twice for this question.");
+    }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{sms();pcc();lt()});
+function lt(){const t=localStorage.getItem('qt')||'light';st.th=t;document.documentElement.setAttribute('data-theme',t);uti()}
+function tgt(){st.th=st.th==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',st.th);localStorage.setItem('qt',st.th);uti()}
+function uti(){const i=document.querySelector('#tt i');if(i)i.className=st.th==='light'?'fas fa-moon':'fas fa-sun'}
+function pcc(){document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('copy',e=>e.preventDefault());document.addEventListener('cut',e=>e.preventDefault());document.addEventListener('selectstart',e=>{if(!e.target.tagName.match(/INPUT|TEXTAREA/i))e.preventDefault()})}
+function sms(){const mc=document.querySelectorAll('.mode-card'),sb=document.getElementById('sb');mc.forEach(c=>{c.addEventListener('click',()=>{mc.forEach(x=>x.classList.remove('selected'));c.classList.add('selected');qd.m=c.dataset.mode;sb.disabled=false})});sb.addEventListener('click',sq)}
+function sq(){const ct=document.getElementById('ct'),ctv=parseInt(ct.value);if(ctv&&ctv>0){st.tr=ctv*60;qd.tt=ctv*60}document.body.style.overflow='hidden';document.getElementById('modeSelection').style.display='none';document.getElementById('quizContainer').style.display='block';document.getElementById('mb').textContent=qd.m;document.getElementById('mb').className='mode-badge '+qd.m;iq()}
+function iq(){Lifelines.init();VoiceEngine.init();rq(0);rqg();stt();sn()}
+function stt(){utd();st.ti=setInterval(()=>{st.tr--;utd();if(st.tr<=0){clearInterval(st.ti);sbq()}if(st.tr<=60)document.getElementById('td').classList.add('warning')},1000)}
+function utd(){const m=Math.floor(st.tr/60),s=st.tr%60;document.getElementById('tt2').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+function rq(i){st.cq=i;const q=qd.q[i],qs=document.getElementById('qs');let h=`<div class="question-card"><div class="question-number"><i class="fas fa-question-circle"></i>Question ${i+1} of ${qd.q.length}</div>`;if(q.ref)h+=`<div class="question-reference protected-content"><i class="fas fa-info-circle"></i> ${q.ref}</div>`;h+=`<div class="question-text protected-content">${q.txt}</div><div class="options-container">`;q.opts.forEach((o,x)=>{let bc='option-btn',ic=String.fromCharCode(65+x);const isSel=st.a[i]===x,isCor=x===q.ci,shAns=(qd.m==='practice'&&st.a[i]!==null)||st.sb;if(isSel)bc+=' selected';if(shAns){bc+=' disabled';if(isCor){bc+=' correct';ic='<i class="fas fa-check"></i>'}else if(isSel&&!isCor){bc+=' incorrect';ic='<i class="fas fa-times"></i>'}}h+=`<button class="${bc}" data-index="${x}" onclick="so(${x})"><div class="option-indicator">${ic}</div><div class="option-text protected-content">${o}</div></button>`});h+=`</div>`;const shExp=(qd.m==='practice'&&st.a[i]!==null)||st.sb;if(shExp){if(explanationMode==='notes'){h+=buildStudyNotes(q.exp)}else{h+=`<div class="explanation-box" style="display:block"><div class="explanation-header"><i class="fas fa-lightbulb"></i>Explanation</div><div class="explanation-text protected-content">${q.exp}</div></div>`}}h+=`</div>`;qs.innerHTML=h;qs.scrollTop=0;up();unb();uqg();if(!st.sb && VoiceEngine.enabledQ){VoiceEngine.speakQuestion(q);}}
+function so(oi){if(st.sb)return;const q=qd.q[st.cq];if(Lifelines.doubleDipActive){if(oi!==q.ci){Lifelines.doubleDipActive=false;const btn=document.querySelector('.option-btn[data-index="'+oi+'"]');if(btn){btn.classList.add('incorrect');btn.style.pointerEvents='none';btn.querySelector('.option-indicator').innerHTML='<i class="fas fa-times"></i>';}return;}else{Lifelines.doubleDipActive=false;}}if(st.a[st.cq]===oi){st.a[st.cq]=null}else{st.a[st.cq]=oi}rq(st.cq);if(qd.m==='practice' && st.a[st.cq]!==null && VoiceEngine.enabledExp){VoiceEngine.speakExplanation(q.exp);}}
+function sn(){document.getElementById('pv').addEventListener('click',np);document.getElementById('nx').addEventListener('click',nn);document.getElementById('mk').addEventListener('click',tm);document.getElementById('sm').addEventListener('click',cs);document.getElementById('nt').addEventListener('click',tnp);document.getElementById('nc').addEventListener('click',tnp);document.getElementById('rb').addEventListener('click',ra);document.getElementById('rsb').addEventListener('click',rs);document.getElementById('tt').addEventListener('click',tgt);document.addEventListener('keydown',e=>{if(st.sb)return;if(e.key==='ArrowLeft')np();if(e.key==='ArrowRight')nn()})}
+function np(){if(st.cq>0)rq(st.cq-1)}
+function nn(){if(st.cq<qd.q.length-1)rq(st.cq+1)}
+function tm(){st.mk[st.cq]=!st.mk[st.cq];uqg();const mb=document.getElementById('mk');mb.innerHTML=st.mk[st.cq]?'<i class="fas fa-bookmark"></i> Unmark':'<i class="fas fa-bookmark"></i> Mark'}
+function unb(){document.getElementById('pv').disabled=st.cq===0;if(st.cq===qd.q.length-1){document.getElementById('nx').style.display='none';document.getElementById('sm').style.display='flex'}else{document.getElementById('nx').style.display='flex';document.getElementById('sm').style.display='none'}const mb=document.getElementById('mk');mb.innerHTML=st.mk[st.cq]?'<i class="fas fa-bookmark"></i> Unmark':'<i class="fas fa-bookmark"></i> Mark'}
+function up(){const at=st.a.filter(a=>a!==null).length,pr=((st.cq+1)/qd.q.length)*100;document.getElementById('pt').textContent=`Question ${st.cq+1} of ${qd.q.length}`;document.getElementById('at').textContent=`Attempted: ${at}/${qd.q.length}`;document.getElementById('pb').style.width=pr+'%'}
+function rqg(){const g=document.getElementById('qg');g.innerHTML='';qd.q.forEach((_,i)=>{const it=document.createElement('div');it.className='question-nav-item';it.textContent=i+1;it.onclick=()=>{rq(i);if(window.innerWidth<768)tnp()};g.appendChild(it)})}
+function uqg() {
+    const its = document.querySelectorAll('.question-nav-item');
+    its.forEach((it, i) => {
+        it.className = 'question-nav-item';
+        if (i === st.cq) it.classList.add('current');
+        if (st.sb) {
+            if (st.a[i] === qd.q[i].ci) it.classList.add('correct');
+            else if (st.a[i] !== null) it.classList.add('incorrect');
+        } else {
+            if (st.a[i] !== null) it.classList.add('answered');
+            if (st.mk[i]) it.classList.add('marked');
+        }
+    });
+}
+function tnp(){document.getElementById('np').classList.toggle('open')}
+function cs(){const u=st.a.filter(a=>a===null).length;if(u>0){const c=window.confirm(`You have ${u} unattempted question(s). Do you want to submit?`);if(!c)return}sbq()}
+function sbq(){clearInterval(st.ti);st.sb=true;let c=0,ic=0,u=0,nm=0;st.a.forEach((a,i)=>{if(a===null)u++;else if(a===qd.q[i].ci)c++;else{ic++;nm+=qd.nm}});const ts=c-nm,pc=(ts/qd.q.length)*100;document.body.style.overflow='auto';document.getElementById('quizContainer').style.display='none';document.getElementById('resultsContainer').style.display='block';document.getElementById('resultsContainer').classList.add('scrollable');if(pc>=70){document.getElementById('ri').innerHTML='<i class="fas fa-trophy" style="color:#fbbf24"></i>';document.getElementById('rt').textContent='Excellent Performance!'}else if(pc>=50){document.getElementById('ri').innerHTML='<i class="far fa-smile" style="color:#48bb78"></i>';document.getElementById('rt').textContent='Good Job!'}else{document.getElementById('ri').innerHTML='<i class="far fa-meh" style="color:#f5576c"></i>';document.getElementById('rt').textContent='Keep Practicing!'}document.getElementById('rs').textContent=ts.toFixed(2)+' / '+qd.q.length;document.getElementById('rp').textContent=pc.toFixed(1)+'%';document.getElementById('cc').textContent=c;document.getElementById('ic').textContent=ic;document.getElementById('uc').textContent=u;document.getElementById('nm').textContent='-'+nm.toFixed(2)}
+function ra(){st.rv=true;document.body.style.overflow='hidden';document.getElementById('resultsContainer').style.display='none';document.getElementById('quizContainer').style.display='block';rq(0);uqg()}
+function rs(){document.body.style.overflow='hidden';location.reload()}
+</script>
+</body>
+</html>
