@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>9 MODERN HISTIRY</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--primary:#667eea;--primary-dark:#5568d3;--secondary:#764ba2;--success:#48bb78;--danger:#f5576c;--warning:#fbbf24;--info:#4facfe;--bg-light:#f7fafc;--bg-white:#fff;--text-dark:#1a202c;--text-light:#718096;--border:#e2e8f0}
 [data-theme="dark"]{--bg-light:#1a202c;--bg-white:#2d3748;--text-dark:#f7fafc;--text-light:#cbd5e0;--border:#4a5568}
-body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);min-height:100vh;overflow:hidden;user-select:none;-webkit-user-select:none;transition:background .3s}
+body{font-family:'Poppins','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);min-height:100vh;overflow:hidden;user-select:none;-webkit-user-select:none;transition:background .3s}
 .scrollable::-webkit-scrollbar{width:6px}
 .scrollable::-webkit-scrollbar-track{background:transparent}
 .scrollable::-webkit-scrollbar-thumb{background:var(--primary);border-radius:10px}
@@ -338,6 +338,16 @@ body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;backgroun
     .question-nav-panel { padding: 32px; }
     .question-grid { grid-template-columns: repeat(5, 1fr); }
     .nav-controls { padding: 16px 48px; }
+}
+
+/* Mobile: scrollable bottom bar, Next/Submit at 3rd place */
+@media (max-width: 1023px) {
+    #quizContainer{height:100dvh}
+    .question-section{bottom:calc(72px + env(safe-area-inset-bottom))}
+    .nav-controls{overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;padding-bottom:calc(10px + env(safe-area-inset-bottom));scrollbar-width:thin}
+    .nav-controls .nav-btn{flex:0 0 auto;min-width:92px;white-space:nowrap;scroll-snap-align:start}
+    #pv{order:1} #mk{order:2} #nx,#sm{order:3} #ll-5050{order:4} #ll-poll{order:5} #ll-double{order:6}
+    .nav-controls > :not(.nav-btn){order:7}
 }
 </style>
 </head>
